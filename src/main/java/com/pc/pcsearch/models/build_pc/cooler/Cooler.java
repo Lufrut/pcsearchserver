@@ -1,4 +1,5 @@
 package com.pc.pcsearch.models.build_pc.cooler;
+import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +28,9 @@ public class Cooler {
     private int thermalTubes;
 
     private String description;
+
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
 }

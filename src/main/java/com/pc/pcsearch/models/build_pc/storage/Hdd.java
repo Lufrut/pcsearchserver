@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.build_pc.storage;
 
+import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -36,4 +37,8 @@ public class Hdd {
 
     private String description;
 
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
 }

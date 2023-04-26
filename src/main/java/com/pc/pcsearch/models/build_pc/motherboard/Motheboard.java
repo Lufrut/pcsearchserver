@@ -1,6 +1,7 @@
 package com.pc.pcsearch.models.build_pc.motherboard;
 
 import com.pc.pcsearch.models.build_pc.FormFactor;
+import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -70,4 +71,9 @@ public class Motheboard {
     private boolean digitalAudioJack;
 
     private String description;
+
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
 }

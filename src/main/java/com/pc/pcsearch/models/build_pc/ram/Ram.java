@@ -1,4 +1,5 @@
 package com.pc.pcsearch.models.build_pc.ram;
+import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,9 @@ public class Ram {
     private float powerSupplyVoltage;
 
     private String description;
+
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
 }

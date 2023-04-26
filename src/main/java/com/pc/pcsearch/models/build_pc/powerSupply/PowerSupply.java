@@ -52,4 +52,9 @@ public class PowerSupply {
 
     private int description;
 
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
+
 }

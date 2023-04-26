@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.build_pc.pcCase;
 import com.pc.pcsearch.models.build_pc.FormFactor;
+import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -44,4 +45,9 @@ public class Case {
     private int powerSupplyFormFactor;
 
     private String description;
+
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerfomanceLevel perfomanceLevel;
 }
