@@ -1,4 +1,4 @@
-package com.pc.pcsearch.models.build_pc;
+package com.pc.pcsearch.models.build_pc.processor;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -6,11 +6,13 @@ import lombok.*;
 @Data
 
 @Entity
-@Table(name = "form_factor")
-public class FormFactor {
+@Table(name = "cpu_producer")
+public class CPUProducer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
+
+
 }

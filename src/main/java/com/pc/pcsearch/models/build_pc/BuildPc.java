@@ -1,7 +1,18 @@
 package com.pc.pcsearch.models.build_pc;
 
+import com.pc.pcsearch.models.build_pc.cooler.Cooler;
+import com.pc.pcsearch.models.build_pc.graphiccard.GraphicCard;
+import com.pc.pcsearch.models.build_pc.motherboard.Motheboard;
+import com.pc.pcsearch.models.build_pc.pcCase.Case;
+import com.pc.pcsearch.models.build_pc.powerSupply.PowerSupply;
+import com.pc.pcsearch.models.build_pc.processor.Processor;
+import com.pc.pcsearch.models.build_pc.ram.Ram;
+import com.pc.pcsearch.models.build_pc.storage.Hdd;
+import com.pc.pcsearch.models.build_pc.storage.Ssd;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Data
@@ -14,42 +25,39 @@ public class BuildPc{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "name_of_build")
     private String nameOfBuild;
 
-    @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "motherboard")
-    private int motherboard;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Motheboard motherboard;
 
-    @Column(name = "processor")
-    private int processor;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Processor processor;
 
-    @Column(name = "graphiccard")
-    private int graphicCard;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private GraphicCard graphicCard;
 
-    @Column(name = "ram")
-    private int ram;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ram> ram;
 
-    @Column(name = "power_supply")
-    private int powerSupply;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PowerSupply powerSupply;
 
-    @Column(name = "hdd")
-    private int hdd;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Hdd> hdd;
 
-    @Column(name = "ssd")
-    private int ssd;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ssd> ssd;
 
-    @Column(name = "pc_case")
-    private int pcCase;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Case pcCase;
 
-    @Column(name = "cooler")
-    private int cooler;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Cooler cooler;
 
-    @Column(name = "count_of_likes")
     private int countOfLikes;
 
-    @Column(name = "rating_id")
-    private int ratingId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Rating ratingId;
 }

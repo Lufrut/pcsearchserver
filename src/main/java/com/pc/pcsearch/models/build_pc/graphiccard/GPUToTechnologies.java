@@ -2,13 +2,11 @@ package com.pc.pcsearch.models.build_pc.graphiccard;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Data
 
 @Entity
-@Table(name = "graphic_card_gpu_technologies")
-public class GraphicCardGPUTechnologies {
+@Table(name = "gpu_to_technologies")
+public class GPUToTechnologies {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

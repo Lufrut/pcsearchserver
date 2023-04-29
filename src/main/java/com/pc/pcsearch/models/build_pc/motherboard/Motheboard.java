@@ -2,10 +2,14 @@ package com.pc.pcsearch.models.build_pc.motherboard;
 
 import com.pc.pcsearch.models.build_pc.FormFactor;
 import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.processor.CPUGeneration;
+import com.pc.pcsearch.models.build_pc.processor.CPUPcieVersion;
+import com.pc.pcsearch.models.build_pc.processor.CPUProducer;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 
@@ -20,6 +24,9 @@ public class Motheboard {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private MotherboardSocket socket;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CPUGeneration> cpuGenerations;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private MotherboardChipset chipset;
@@ -37,12 +44,16 @@ public class Motheboard {
     private int supportedMemoryFrequency;
 
     private int maxAmountOfRam;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private MotherboardNetwork network;
 
     private boolean bluetooth;
 
     private boolean wifi;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private CPUPcieVersion pcieVersion;
 
     private int pcExpressX16;
 

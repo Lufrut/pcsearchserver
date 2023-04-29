@@ -6,11 +6,15 @@ import lombok.*;
 @Data
 
 @Entity
-@Table(name = "form_factor")
-public class FormFactor {
+@Table(name = "admin")
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String name;
+    private String login;
+
+    private String password;
+
+    private String email;
 }
