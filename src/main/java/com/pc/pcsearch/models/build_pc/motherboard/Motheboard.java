@@ -53,11 +53,11 @@ public class Motheboard {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private CPUPcieVersion pcieVersion;
 
-    private int pcExpressX16;
+    private int pci_express_x16;
 
-    private int PciExpressX4;
+    private int pci_express_x4;
 
-    private int PciExpressX1;
+    private int pci_express_x1;
 
     private int sata3;
 

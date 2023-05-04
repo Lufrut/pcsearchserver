@@ -15,7 +15,8 @@ public class PowerSupply {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private int producer;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PowerSupply producer;
 
     private String name;
 
@@ -50,7 +51,7 @@ public class PowerSupply {
 
     private int count_of_12_v_lines;
 
-    private int description;
+    private String description;
 
     private int recommendedPrice;
 
