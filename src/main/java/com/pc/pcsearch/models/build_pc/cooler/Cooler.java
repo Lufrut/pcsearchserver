@@ -1,5 +1,5 @@
 package com.pc.pcsearch.models.build_pc.cooler;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,17 +10,17 @@ import lombok.*;
 public class Cooler {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerProducer producer;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerSocket socket;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerMaterial material;
 
     private int maxTdp;
@@ -31,6 +31,6 @@ public class Cooler {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }

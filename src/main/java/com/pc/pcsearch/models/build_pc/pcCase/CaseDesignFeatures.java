@@ -9,7 +9,7 @@ import lombok.*;
 public class CaseDesignFeatures {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "design_features")
     private String designFeatures;

@@ -11,7 +11,7 @@ import lombok.*;
 public class Processor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 
@@ -33,7 +33,7 @@ public class Processor {
 
     private int l3Cache;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CPUGeneration cpuGeneration;
 
     private int technicalProcess;
@@ -44,7 +44,7 @@ public class Processor {
 
     private Boolean embeddedGraphic;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CPUPcieVersion pcieVersion;
 
     private String description;

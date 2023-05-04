@@ -1,6 +1,6 @@
 package com.pc.pcsearch.models.build_pc.pcCase;
 import com.pc.pcsearch.models.build_pc.FormFactor;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Case {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 
@@ -37,7 +37,7 @@ public class Case {
 
     private int usb_2_0;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private ArrayList<CaseDesignFeatures> designFeatures;
 
     private int maxLengthOfGraphicCard;
@@ -48,6 +48,6 @@ public class Case {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }

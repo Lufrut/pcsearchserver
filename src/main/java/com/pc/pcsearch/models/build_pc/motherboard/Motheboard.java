@@ -1,14 +1,12 @@
 package com.pc.pcsearch.models.build_pc.motherboard;
 
 import com.pc.pcsearch.models.build_pc.FormFactor;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import com.pc.pcsearch.models.build_pc.processor.CPUGeneration;
 import com.pc.pcsearch.models.build_pc.processor.CPUPcieVersion;
-import com.pc.pcsearch.models.build_pc.processor.CPUProducer;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,23 +16,23 @@ import java.util.List;
 public class Motheboard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private MotherboardSocket socket;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<CPUGeneration> cpuGenerations;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private MotherboardChipset chipset;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private FormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private MotherboardProducers motherboardProducer;
 
     private int maxTdpOfProcessors;
@@ -86,5 +84,5 @@ public class Motheboard {
     private int recommendedPrice;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    private PerformanceLevel performanceLevel;
 }

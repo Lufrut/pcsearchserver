@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class PowerSupplyProducer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String producer;
 

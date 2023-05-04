@@ -5,17 +5,17 @@ import lombok.*;
 @Data
 
 @Entity
-@Table(name = "gpu_to_technologies")
-public class GPUToTechnologies {
+@Table(name = "gpu_to_connector")
+public class GPUToConnector {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private GraphicCard graphicCard;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    private GPUTechnologies gpuTechnologies;
+    private GPUConnector gpuConnector;
 
     private int count;
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 public class StorageInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 }

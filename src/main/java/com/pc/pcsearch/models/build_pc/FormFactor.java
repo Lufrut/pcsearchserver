@@ -10,7 +10,7 @@ import lombok.*;
 public class FormFactor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 }

@@ -1,5 +1,5 @@
 package com.pc.pcsearch.models.build_pc.graphiccard;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,14 +12,14 @@ import java.util.List;
 public class GraphicCard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private GPUProducer producer;
 
     private  String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private GPUVendor vendor;
 
     private int year;
@@ -30,7 +30,7 @@ public class GraphicCard {
 
     private int memoryAmount;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private GPUMemoryType memoryType;
 
     private int memoryFrequency;
@@ -39,21 +39,20 @@ public class GraphicCard {
 
     private int tdp;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<GPUConnector> connector;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private GPUInterfaceType interfaceType;
 
     private int length;
 
     private String description;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<GPUToTechnologies> gpuTechnologies;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private GPUTechnologies gpuTechnologies;
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }

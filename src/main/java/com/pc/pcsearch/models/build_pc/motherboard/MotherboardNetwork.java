@@ -10,7 +10,7 @@ import lombok.Data;
 public class MotherboardNetwork {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String network;
 }

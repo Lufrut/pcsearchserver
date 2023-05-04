@@ -10,7 +10,7 @@ import lombok.Data;
 public class MotherboardSocket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String socket;
 }

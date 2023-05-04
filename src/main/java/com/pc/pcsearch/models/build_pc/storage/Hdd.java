@@ -1,6 +1,6 @@
 package com.pc.pcsearch.models.build_pc.storage;
 
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,9 +11,9 @@ import lombok.Data;
 public class Hdd {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private StorageProducer producer;
 
@@ -21,11 +21,11 @@ public class Hdd {
 
     private int speed;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private StorageFormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private StorageInterface storageInterface;
 
@@ -39,6 +39,6 @@ public class Hdd {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }

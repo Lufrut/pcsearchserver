@@ -12,10 +12,9 @@ import java.util.List;
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "build_pc")
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<Like> like;
 
     @ManyToOne(cascade = CascadeType.MERGE)

@@ -1,6 +1,6 @@
 package com.pc.pcsearch.models.build_pc.powerSupply;
 import com.pc.pcsearch.models.build_pc.FormFactor;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class PowerSupply {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private int producer;
 
@@ -21,17 +21,17 @@ public class PowerSupply {
 
     private int power;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private FormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel performanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 
     private boolean pfcModule;
 
     private boolean modularConnection;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<PowerSupplyProtectionFunctions> protection;
 
     private int cpu_4pin;
@@ -53,8 +53,5 @@ public class PowerSupply {
     private int description;
 
     private int recommendedPrice;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
 
 }

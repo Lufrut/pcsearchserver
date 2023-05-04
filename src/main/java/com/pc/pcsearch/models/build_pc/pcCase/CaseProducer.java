@@ -9,7 +9,7 @@ import lombok.*;
 public class CaseProducer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "producer")
     private String producer;

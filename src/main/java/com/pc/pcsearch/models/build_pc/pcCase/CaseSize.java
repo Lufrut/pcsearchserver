@@ -9,7 +9,7 @@ import lombok.*;
 public class CaseSize {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "size")
     private String size;

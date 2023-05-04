@@ -9,7 +9,7 @@ import lombok.*;
 public class CasePowerSupplyLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "power_supply_location")
     private String powerSupplyLocation;

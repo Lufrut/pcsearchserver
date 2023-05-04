@@ -1,5 +1,5 @@
 package com.pc.pcsearch.models.build_pc.ram;
-import com.pc.pcsearch.models.build_pc.PerfomanceLevel;
+import com.pc.pcsearch.models.build_pc.PerformanceLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,19 +10,22 @@ import lombok.*;
 public class Ram {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
 
-    private int producer;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private RamProducer producer;
 
-    private int memoryType;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private RamMemoryType memoryType;
 
     private int memoryCapacity;
 
     private int frequency;
 
-    private int timings;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private RamTimings timings;
 
     private float powerSupplyVoltage;
 
@@ -30,6 +33,6 @@ public class Ram {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PerfomanceLevel perfomanceLevel;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }
