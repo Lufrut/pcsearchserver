@@ -1,6 +1,6 @@
 package com.pc.pcsearch.services;
 
-import com.pc.pcsearch.models.build_pc.Admin;
+import com.pc.pcsearch.models.buildpc.Admin;
 
 import java.util.List;
 import java.util.Optional;

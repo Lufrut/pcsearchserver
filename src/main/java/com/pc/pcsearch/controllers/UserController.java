@@ -1,6 +1,6 @@
 package com.pc.pcsearch.controllers;
 
-import com.pc.pcsearch.models.build_pc.User;
+import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

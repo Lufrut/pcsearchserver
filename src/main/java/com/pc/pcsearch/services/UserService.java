@@ -1,6 +1,6 @@
 package com.pc.pcsearch.services;
 
-import com.pc.pcsearch.models.build_pc.User;
+import com.pc.pcsearch.models.buildpc.User;
 
 import java.util.List;
 import java.util.Optional;
