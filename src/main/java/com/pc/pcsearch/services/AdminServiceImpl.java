@@ -2,7 +2,6 @@ package com.pc.pcsearch.services;
 
 import com.pc.pcsearch.models.build_pc.Admin;
 import com.pc.pcsearch.postgresql.repository.AdminRepository;
-import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
