@@ -34,8 +34,9 @@ public class AdminController {
     }
 
     @DeleteMapping("/admin/{id}")
-    void delete(@PathVariable long id){
+    public String delete(@PathVariable long id){
         adminService.delete(id);
+        return "Successful deleted";
     }
 
 }
