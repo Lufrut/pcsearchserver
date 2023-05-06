@@ -1,4 +1,4 @@
-package com.pc.pcsearch.models.buildpc.powerSupply;
+package com.pc.pcsearch.models.buildpc.powersupply;
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import jakarta.persistence.*;

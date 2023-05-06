@@ -1,4 +1,4 @@
-package com.pc.pcsearch.models.buildpc.pcCase;
+package com.pc.pcsearch.models.buildpc.pccase;
 import jakarta.persistence.*;
 import lombok.*;
 

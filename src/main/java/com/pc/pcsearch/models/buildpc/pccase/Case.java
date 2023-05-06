@@ -1,4 +1,4 @@
-package com.pc.pcsearch.models.buildpc.pcCase;
+package com.pc.pcsearch.models.buildpc.pccase;
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.pc.pcsearch.models.buildpc.powerSupply;
+package com.pc.pcsearch.models.buildpc.powersupply;
 import jakarta.persistence.*;
 import lombok.*;
 
