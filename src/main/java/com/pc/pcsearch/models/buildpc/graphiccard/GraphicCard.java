@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.buildpc.graphiccard;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,12 +16,12 @@ public class GraphicCard {
     private long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private GPUProducer producer;
+    private Producers producer;
 
     private  String name;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private GPUVendor vendor;
+    private Producers vendor;
 
     private int year;
 

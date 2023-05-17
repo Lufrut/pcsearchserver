@@ -47,5 +47,8 @@ public class Processor {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CPUPcieVersion pcieVersion;
 
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private CPUTech cpuTech;
+
     private String description;
 }

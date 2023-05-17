@@ -1,12 +1,13 @@
-package com.pc.pcsearch.models.buildpc.cooler;
+package com.pc.pcsearch.models.buildpc;
+
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Data
 
 @Entity
-@Table(name = "Cooler_producer")
-public class CoolerProducer {
+@Table(name = "producers")
+public class Producers {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

@@ -2,6 +2,7 @@ package com.pc.pcsearch.models.buildpc.motherboard;
 
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import com.pc.pcsearch.models.buildpc.processor.CPUGeneration;
 import com.pc.pcsearch.models.buildpc.processor.CPUPcieVersion;
 import jakarta.persistence.*;
@@ -33,7 +34,7 @@ public class Motheboard {
     private FormFactor formFactor;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private MotherboardProducers motherboardProducer;
+    private Producers motherboardProducer;
 
     private int maxTdpOfProcessors;
 

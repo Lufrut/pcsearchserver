@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.buildpc.cooler;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ public class Cooler {
     private String name;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private CoolerProducer producer;
+    private Producers producer;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerSocket socket;

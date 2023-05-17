@@ -27,7 +27,8 @@ public class BuildPc{
 
     private String nameOfBuild;
 
-    private int userId;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Motheboard motherboard;
@@ -60,4 +61,6 @@ public class BuildPc{
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Rating ratingId;
+
+    private int totalPrice;
 }

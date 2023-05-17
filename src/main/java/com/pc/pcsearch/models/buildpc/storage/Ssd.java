@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.buildpc.storage;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ public class Ssd {
     private long id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private StorageProducer producer;
+    private Producers producer;
 
     private int storageSize;
 

@@ -1,6 +1,7 @@
 package com.pc.pcsearch.models.buildpc.pccase;
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 @Data
 
 @Entity
-@Table(name = "pccase")
+@Table(name = "pc_case")
 public class Case {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +19,7 @@ public class Case {
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private CaseProducer producer;
+    private Producers producer;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private CaseSize size;

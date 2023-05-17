@@ -1,6 +1,7 @@
 package com.pc.pcsearch.models.buildpc.powersupply;
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +17,7 @@ public class PowerSupply {
     private long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private PowerSupply producer;
+    private Producers producer;
 
     private String name;
 

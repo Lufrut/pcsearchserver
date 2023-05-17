@@ -1,6 +1,7 @@
 package com.pc.pcsearch.models.buildpc.storage;
 
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,8 +15,7 @@ public class Hdd {
     private long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(referencedColumnName = "id", nullable = false)
-    private StorageProducer producer;
+    private Producers producer;
 
     private int storageSize;
 
