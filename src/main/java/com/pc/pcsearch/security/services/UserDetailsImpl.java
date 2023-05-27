@@ -1,17 +1,15 @@
 package com.pc.pcsearch.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.pc.pcsearch.models.buildpc.User;
+
 
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
@@ -35,13 +33,11 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
     public static UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
-
+        Collection<GrantedAuthority> authorities = new HashSet<GrantedAuthority>(1);
+        authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
         return new UserDetailsImpl(
                 user.getId(),
-                user.getLogin(),
+                user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities);

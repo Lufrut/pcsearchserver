@@ -14,10 +14,21 @@ import java.util.Set;
 @Entity
 @Table(name = "users",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = "login"),
+                @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
 public class User {
+
+    public User(){
+    }
+    public User(String name, String username, String password, ERole role, String email){
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -25,19 +36,14 @@ public class User {
     private String name;
 
     @NotBlank
-    private String login;
+    private String username;
 
     @NotBlank
     private String password;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    private Set<Role> roles = new HashSet<>();
+    private ERole role;
 
     @NotBlank
     @Email
     private String email;
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
 }

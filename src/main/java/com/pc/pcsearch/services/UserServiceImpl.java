@@ -41,10 +41,10 @@ public class UserServiceImpl implements UserService{
         ){
             temp.setEmail(user.getEmail());
         }
-        if(Objects.nonNull(user.getLogin())
-                && !"".equalsIgnoreCase(user.getLogin())
+        if(Objects.nonNull(user.getUsername())
+                && !"".equalsIgnoreCase(user.getUsername())
         ){
-            temp.setLogin(user.getLogin());
+            temp.setUsername(user.getUsername());
         }
 
         return userRepository.save(temp);
