@@ -1,5 +1,6 @@
 package com.pc.pcsearch.security;
 
+import com.pc.pcsearch.models.buildpc.ERole;
 import com.pc.pcsearch.security.jwt.AuthEntryPointJwt;
 import com.pc.pcsearch.security.jwt.AuthTokenFilter;
 import com.pc.pcsearch.security.services.UserDetailsServiceImpl;
@@ -62,6 +63,8 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
+                        .requestMatchers("/api/admin/**").hasAuthority(ERole.ROLE_ADMIN.name())
+                        .requestMatchers("/api/user/**").hasAnyAuthority(ERole.ROLE_USER.name(),ERole.ROLE_ADMIN.name())
                         .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());

@@ -10,30 +10,31 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/")
 public class UserController {
     @Autowired
     UserService userService;
-    @PostMapping("/user")
+    @PostMapping("/user/user")
     public User createAdmin(@Valid @RequestBody User user){
         return userService.create(user);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/user/user/{id}")
     public User update(@Valid @RequestBody User user, @PathVariable long id){
         return userService.update(user, id);
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/user")
     public List<User> getAll(){
         return userService.getAll();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/user/{id}")
     public Optional<User> getOne(@PathVariable long id){
         return userService.findById(id);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/user/user/{id}")
     public String delete(@PathVariable long id){
         userService.delete(id);
         return "Successful deleted";

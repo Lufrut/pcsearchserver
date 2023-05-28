@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class BuildPcController {
 
     @Autowired
