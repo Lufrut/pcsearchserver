@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class RamTimingsController {
     @Autowired
     RamTimingsService ramTimingsService;
 
-    @PostMapping("/ramTimings")
+    @PostMapping("/admin/ramTimings")
     public RamTimings createRamTimings(@Valid @RequestBody RamTimings ramTimings){
         return ramTimingsService.create(ramTimings);
     }
 
-    @GetMapping("/ramTimings/{id}")
+    @GetMapping("/user/ramTimings/{id}")
     public RamTimings getRamTimings(@PathVariable long id){
         return ramTimingsService.findById(id);
     }
 
-    @GetMapping("/ramTimings")
+    @GetMapping("/user/ramTimings")
     public List<RamTimings> getAllRamTimings(){
         return ramTimingsService.findAll();
     }
 
-    @PutMapping("/ramTimings/{id}")
+    @PutMapping("/admin/ramTimings/{id}")
     public RamTimings updateRamTimings(
             @Valid @RequestBody RamTimings ramTimings,
             @PathVariable long id
@@ -36,7 +37,7 @@ public class RamTimingsController {
         return ramTimingsService.update(ramTimings, id);
     }
 
-    @DeleteMapping("/ramTimings/{id}")
+    @DeleteMapping("/admin/ramTimings/{id}")
     public String deleteRamTimings(@PathVariable long id){
         ramTimingsService.delete(id);
         return "Successful deleted";

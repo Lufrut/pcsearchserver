@@ -8,34 +8,35 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/api/")
 @RestController
 public class RamMemoryTypeController {
     @Autowired
     RamMemoryTypeService ramMemoryTypeService;
 
-    @PostMapping("/ramMemoryType")
+    @PostMapping("/admin/ramMemoryType")
     public RamMemoryType createRamMemoryType(@Valid @RequestBody RamMemoryType ramMemoryType){
         return  ramMemoryTypeService.create(ramMemoryType);
     }
 
-    @GetMapping("/ramMemoryType/{id}")
+    @GetMapping("/user/ramMemoryType/{id}")
     public RamMemoryType getRamMemoryType(@PathVariable long id){
         return ramMemoryTypeService.findById(id);
     }
 
-    @GetMapping("/ramMemoryType")
+    @GetMapping("/user/ramMemoryType")
     public List<RamMemoryType> getAllRamMemoryType(){
         return ramMemoryTypeService.findAll();
     }
 
-    @PutMapping("/ramMemoryType/{id}")
+    @PutMapping("/admin/ramMemoryType/{id}")
     public RamMemoryType updateRamMemoryType(
             @Valid @RequestBody RamMemoryType ramMemoryType,
             @PathVariable long id){
         return ramMemoryTypeService.update(ramMemoryType, id);
     }
 
-    @DeleteMapping("/ramMemoryType/{id}")
+    @DeleteMapping("/admin/ramMemoryType/{id}")
     public String deleteRamMemoryType(@PathVariable long id){
         ramMemoryTypeService.delete(id);
         return "Successful deleted";
