@@ -3,12 +3,13 @@ package com.pc.pcsearch.services.ram;
 import com.pc.pcsearch.models.buildpc.ram.RamMemoryType;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RamMemoryTypeService {
 
     RamMemoryType create(RamMemoryType ramMemoryType);
 
-    RamMemoryType findById(long id);
+    Optional<RamMemoryType> findById(long id);
 
     List<RamMemoryType> findAll();
 

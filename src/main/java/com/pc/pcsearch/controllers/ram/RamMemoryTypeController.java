@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/api/")
 @RestController
@@ -20,7 +21,7 @@ public class RamMemoryTypeController {
     }
 
     @GetMapping("/user/ramMemoryType/{id}")
-    public RamMemoryType getRamMemoryType(@PathVariable long id){
+    public Optional<RamMemoryType> getRamMemoryType(@PathVariable long id){
         return ramMemoryTypeService.findById(id);
     }
 

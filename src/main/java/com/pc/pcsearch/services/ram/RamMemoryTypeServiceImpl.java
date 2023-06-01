@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RamMemoryTypeServiceImpl implements  RamMemoryTypeService{
@@ -18,8 +19,8 @@ public class RamMemoryTypeServiceImpl implements  RamMemoryTypeService{
     }
 
     @Override
-    public RamMemoryType findById(long id) {
-        return ramMemoryTypeRepository.findById(id).orElseThrow();
+    public Optional<RamMemoryType> findById(long id) {
+        return ramMemoryTypeRepository.findById(id);
     }
 
     @Override

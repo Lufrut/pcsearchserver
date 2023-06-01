@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RamServiceImpl implements RamService{
@@ -18,8 +19,8 @@ public class RamServiceImpl implements RamService{
     }
 
     @Override
-    public Ram findById(long id) {
-        return ramRepository.findById(id).orElseThrow();
+    public Optional<Ram> findById(long id) {
+        return ramRepository.findById(id);
     }
 
     @Override

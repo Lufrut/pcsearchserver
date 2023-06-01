@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")
@@ -20,7 +21,7 @@ public class PowerSupplyProtectionFunctionController {
     }
 
     @GetMapping("/user/powerSupplyProtectionFunction/{id}")
-    public PowerSupplyProtectionFunctions getPowerSupplyProtectionFunctions(
+    public Optional<PowerSupplyProtectionFunctions> getPowerSupplyProtectionFunctions(
             @PathVariable long id
     ){
         return powerSupplyProtectionFunctionsService.getOne(id);

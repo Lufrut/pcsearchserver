@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")
@@ -20,7 +21,7 @@ public class RamController {
     }
 
     @GetMapping("/user/ram/{id}")
-    public Ram getRam(@PathVariable long id){
+    public Optional<Ram> getRam(@PathVariable long id){
         return ramService.findById(id);
     }
 

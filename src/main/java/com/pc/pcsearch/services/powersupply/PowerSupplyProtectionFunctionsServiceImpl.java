@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PowerSupplyProtectionFunctionsServiceImpl implements PowerSupplyProtectionFunctionsService{
@@ -18,8 +19,8 @@ public class PowerSupplyProtectionFunctionsServiceImpl implements PowerSupplyPro
     }
 
     @Override
-    public PowerSupplyProtectionFunctions getOne(long id) {
-        return powerSupplyProtectionFunctionsRepository.findById(id).orElseThrow();
+    public Optional<PowerSupplyProtectionFunctions> getOne(long id) {
+        return powerSupplyProtectionFunctionsRepository.findById(id);
     }
 
     @Override
@@ -29,9 +30,12 @@ public class PowerSupplyProtectionFunctionsServiceImpl implements PowerSupplyPro
 
     @Override
     public PowerSupplyProtectionFunctions update(PowerSupplyProtectionFunctions powerSupplyProtectionFunctions, long id) {
-        PowerSupplyProtectionFunctions temp = powerSupplyProtectionFunctionsRepository.findById(id).orElseThrow();
+        PowerSupplyProtectionFunctions temp = powerSupplyProtectionFunctionsRepository.findById(id).orElse(null);
+        if(temp != null)
+    {
         temp.setName(powerSupplyProtectionFunctions.getName());
         return powerSupplyProtectionFunctionsRepository.save(temp);
+    } else return null;
     }
 
     @Override

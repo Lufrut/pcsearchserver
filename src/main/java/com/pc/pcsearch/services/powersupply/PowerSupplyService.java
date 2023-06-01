@@ -3,11 +3,12 @@ package com.pc.pcsearch.services.powersupply;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PowerSupplyService {
     PowerSupply create(PowerSupply powerSupply);
 
-    PowerSupply getOne(long id);
+    Optional<PowerSupply> getOne(long id);
 
     List<PowerSupply> getAll();
 
