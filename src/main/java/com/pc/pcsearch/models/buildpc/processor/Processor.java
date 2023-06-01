@@ -1,4 +1,5 @@
 package com.pc.pcsearch.models.buildpc.processor;
+import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import com.pc.pcsearch.models.buildpc.motherboard.MotherboardSocket;
 import jakarta.persistence.*;
 import lombok.*;
@@ -51,4 +52,9 @@ public class Processor {
     private CPUTech cpuTech;
 
     private String description;
+
+    private int recommendedPrice;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PerformanceLevel performanceLevel;
 }

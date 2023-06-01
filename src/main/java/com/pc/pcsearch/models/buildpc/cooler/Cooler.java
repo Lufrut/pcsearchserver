@@ -4,6 +4,8 @@ import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 
 @Entity
@@ -18,8 +20,8 @@ public class Cooler {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Producers producer;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private CoolerSocket socket;
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private List<CoolerSocket> socket;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerMaterial material;
