@@ -17,6 +17,8 @@ public class Hdd {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Producers producer;
 
+    private String name;
+
     private int storageSize;
 
     private int speed;

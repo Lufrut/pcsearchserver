@@ -16,6 +16,8 @@ public class Ssd {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Producers producer;
 
+    private String name;
+
     private int storageSize;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
