@@ -4,17 +4,40 @@ import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.services.powersupply.PowerSupplyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class PowerSupplyController {
     @Autowired
     PowerSupplyService powerSupplyService;
 
-    @PostMapping("/powerSupply")
+    @PostMapping("/admin/powerSupply")
     public PowerSupply create(@Valid @RequestBody PowerSupply powerSupply){
         return powerSupplyService.create(powerSupply);
+    }
+
+    @GetMapping("/user/powerSupply/{id}")
+    public PowerSupply getPowerSupply(@PathVariable long id){
+        return  powerSupplyService.getOne(id);
+
+    }
+
+    @GetMapping("/user/powerSupply")
+    public List<PowerSupply> getAllPowerSupply() {
+        return powerSupplyService.getAll();
+    }
+
+    @PutMapping("/admin/powerSupply/{id}")
+    public PowerSupply updatePowerSupply(@Valid @RequestBody PowerSupply powerSupply, @PathVariable long id){
+        return powerSupplyService.update(powerSupply, id);
+    }
+
+    @DeleteMapping("/admin/powerSupply/{id}")
+    public String deletePowerSupply(@PathVariable long id){
+        powerSupplyService.delete(id);
+        return "Successful deleted";
     }
 }

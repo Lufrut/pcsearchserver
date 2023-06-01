@@ -20,7 +20,7 @@ public class RamController {
     }
 
     @GetMapping("/user/ram/{id}")
-    public Ram getRam(@Valid @RequestBody Ram ram, @PathVariable long id){
+    public Ram getRam(@PathVariable long id){
         return ramService.findById(id);
     }
 
