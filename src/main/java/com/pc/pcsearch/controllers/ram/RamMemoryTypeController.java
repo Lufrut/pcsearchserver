@@ -20,12 +20,12 @@ public class RamMemoryTypeController {
         return  ramMemoryTypeService.create(ramMemoryType);
     }
 
-    @GetMapping("/user/ramMemoryType/{id}")
+    @GetMapping("/all/ramMemoryType/{id}")
     public Optional<RamMemoryType> getRamMemoryType(@PathVariable long id){
         return ramMemoryTypeService.findById(id);
     }
 
-    @GetMapping("/user/ramMemoryType")
+    @GetMapping("/all/ramMemoryType")
     public List<RamMemoryType> getAllRamMemoryType(){
         return ramMemoryTypeService.findAll();
     }

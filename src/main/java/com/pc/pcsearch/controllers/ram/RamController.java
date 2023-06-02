@@ -20,12 +20,12 @@ public class RamController {
         return ramService.create(ram);
     }
 
-    @GetMapping("/user/ram/{id}")
+    @GetMapping("/all/ram/{id}")
     public Optional<Ram> getRam(@PathVariable long id){
         return ramService.findById(id);
     }
 
-    @GetMapping("/user/ram")
+    @GetMapping("/all/ram")
     public List<Ram> getAllRam(){
         return ramService.findAll();
     }

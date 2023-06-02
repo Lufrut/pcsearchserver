@@ -20,13 +20,13 @@ public class PowerSupplyController {
         return powerSupplyService.create(powerSupply);
     }
 
-    @GetMapping("/user/powerSupply/{id}")
+    @GetMapping("/all/powerSupply/{id}")
     public Optional<PowerSupply> getPowerSupply(@PathVariable long id){
         return  powerSupplyService.getOne(id);
 
     }
 
-    @GetMapping("/user/powerSupply")
+    @GetMapping("/all/powerSupply")
     public List<PowerSupply> getAllPowerSupply() {
         return powerSupplyService.getAll();
     }

@@ -20,12 +20,12 @@ public class CoolerSocketController {
         return  coolerSocketService.create(socket);
     }
 
-    @GetMapping("/user/coolerSocket/{id}")
+    @GetMapping("/all/coolerSocket/{id}")
     public Optional<CoolerSocket> getOne(@PathVariable long id){
         return coolerSocketService.getOne(id);
     }
 
-    @GetMapping("/user/coolerSocket")
+    @GetMapping("/all/coolerSocket")
     public List<CoolerSocket> getAll(){
         return coolerSocketService.getAll();
     }

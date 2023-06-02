@@ -20,12 +20,12 @@ public class CoolerMaterialController {
         return coolerMaterialService.create(coolerMaterial);
     }
 
-    @GetMapping("/user/coolerMaterial/{id}")
+    @GetMapping("/all/coolerMaterial/{id}")
     public Optional<CoolerMaterial> getOne(@PathVariable long id){
         return coolerMaterialService.getOne(id);
     }
 
-    @GetMapping("/user/coolerMaterial")
+    @GetMapping("/all/coolerMaterial")
     public List<CoolerMaterial> getAll(){
         return coolerMaterialService.getAll();
     }

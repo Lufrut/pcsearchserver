@@ -20,12 +20,12 @@ public class RamTimingsController {
         return ramTimingsService.create(ramTimings);
     }
 
-    @GetMapping("/user/ramTimings/{id}")
+    @GetMapping("/all/ramTimings/{id}")
     public Optional<RamTimings> getRamTimings(@PathVariable long id){
         return ramTimingsService.findById(id);
     }
 
-    @GetMapping("/user/ramTimings")
+    @GetMapping("/all/ramTimings")
     public List<RamTimings> getAllRamTimings(){
         return ramTimingsService.findAll();
     }

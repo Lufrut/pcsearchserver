@@ -20,14 +20,14 @@ public class PowerSupplyProtectionFunctionController {
         return powerSupplyProtectionFunctionsService.create(item);
     }
 
-    @GetMapping("/user/powerSupplyProtectionFunction/{id}")
+    @GetMapping("/all/powerSupplyProtectionFunction/{id}")
     public Optional<PowerSupplyProtectionFunctions> getPowerSupplyProtectionFunctions(
             @PathVariable long id
     ){
         return powerSupplyProtectionFunctionsService.getOne(id);
     }
 
-    @GetMapping("/user/powerSupplyProtectionFunction")
+    @GetMapping("/all/powerSupplyProtectionFunction")
     public List<PowerSupplyProtectionFunctions> getPowerSupplyProtectionFunctions(){
         return powerSupplyProtectionFunctionsService.getAll();
     }

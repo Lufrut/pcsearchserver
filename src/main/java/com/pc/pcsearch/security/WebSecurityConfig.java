@@ -63,6 +63,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
+                        .requestMatchers("/api/all/**").permitAll()
                         .requestMatchers("/api/admin/**").hasAuthority(ERole.ROLE_ADMIN.name())
                         .requestMatchers("/api/user/**").hasAnyAuthority(ERole.ROLE_USER.name(),ERole.ROLE_ADMIN.name())
                         .anyRequest().authenticated());
