@@ -43,8 +43,6 @@ public class Case {
 
     private int maxLengthOfGraphicCard;
 
-    private int powerSupplyFormFactor;
-
     private String description;
 
     private int recommendedPrice;

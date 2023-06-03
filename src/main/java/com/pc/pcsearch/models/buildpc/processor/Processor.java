@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.buildpc.processor;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
+import com.pc.pcsearch.models.buildpc.Producers;
 import com.pc.pcsearch.models.buildpc.motherboard.MotherboardSocket;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +18,7 @@ public class Processor {
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private CPUProducer producer;
+    private Producers producer;
 
     private int yearOfRelease;
 
