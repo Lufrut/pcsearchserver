@@ -1,5 +1,8 @@
 package com.pc.pcsearch.payload.response;
 
+import com.pc.pcsearch.models.buildpc.ERole;
+
+import javax.management.relation.Role;
 import java.util.List;
 
 public class JwtResponse {
@@ -11,14 +14,14 @@ public class JwtResponse {
 
     private String name;
 
-    private List<String> roles;
+    private ERole roles;
 
-    public JwtResponse(String accessToken, Long id, String username, String email, String name, List<String> roles) {
+    public JwtResponse(String accessToken, Long id, String username, String email, String name, ERole role) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
         this.email = email;
-        this.roles = roles;
+        this.roles = role;
         this.name = name;
     }
 
@@ -66,7 +69,7 @@ public class JwtResponse {
         this.username = username;
     }
 
-    public List<String> getRoles() {
+    public ERole getRoles() {
         return roles;
     }
 }
