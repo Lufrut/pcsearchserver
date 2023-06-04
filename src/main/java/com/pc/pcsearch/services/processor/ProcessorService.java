@@ -12,5 +12,7 @@ public interface ProcessorService {
 
     List<Processor> getAll();
 
+    Processor update(Processor processor, long id);
 
+    void delete(long id);
 }

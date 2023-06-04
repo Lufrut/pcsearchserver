@@ -58,7 +58,7 @@ public class AuthController {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).toList();
-        ERole role = ERole.valueOf(roles.get(0)) ;
+        ERole role = ERole.valueOf(roles.get(0)) ; // very genius idea to avoid list of enums on front side
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
