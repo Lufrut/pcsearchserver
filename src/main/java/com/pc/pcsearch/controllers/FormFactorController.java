@@ -17,7 +17,7 @@ public class FormFactorController {
     FormFactorService formFactorService;
 
     @PostMapping("/admin/formFactor")
-    public FormFactor create(FormFactor formFactor) {
+    public FormFactor create(@RequestBody @Valid FormFactor formFactor) {
         return formFactorService.create(formFactor);
     }
 

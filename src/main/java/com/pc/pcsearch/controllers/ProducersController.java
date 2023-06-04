@@ -16,7 +16,7 @@ public class ProducersController {
     ProducersService producersService;
 
     @PostMapping("/admin/producers")
-    public Producers create(Producers producers) {
+    public Producers create(@RequestBody @Valid Producers producers) {
         return producersService.create(producers);
     }
 

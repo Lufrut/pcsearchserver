@@ -13,7 +13,7 @@ public class Like {
     private long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private BuildPc buildPc;
+    private BuildPC buildPc;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private User user;

@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "motheboard")
-public class Motheboard {
+public class Motherboard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

@@ -18,5 +18,5 @@ public class Rating {
     private List<Like> like;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    private BuildPc buildPc;
+    private BuildPC buildPc;
 }

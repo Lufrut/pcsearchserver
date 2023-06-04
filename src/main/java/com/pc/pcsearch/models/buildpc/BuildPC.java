@@ -2,7 +2,7 @@ package com.pc.pcsearch.models.buildpc;
 
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
-import com.pc.pcsearch.models.buildpc.motherboard.Motheboard;
+import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
 import com.pc.pcsearch.models.buildpc.pccase.Case;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.models.buildpc.processor.Processor;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Build_pc")
-public class BuildPc{
+public class BuildPC {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +31,7 @@ public class BuildPc{
     private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Motheboard motherboard;
+    private Motherboard motherboard;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Processor processor;

@@ -7,33 +7,34 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+@CrossOrigin
 @RestController
 @RequestMapping("/api/")
 public class PerformanceLevelController {
     @Autowired
     PerformanceLevelService performanceLevelService;
 
-    @PostMapping("/admin/performance-level")
-    public PerformanceLevel create(PerformanceLevel performanceLevel) {
+    @PostMapping("/admin/performanceLevel")
+    public PerformanceLevel create(@Valid @RequestBody PerformanceLevel performanceLevel) {
         return performanceLevelService.create(performanceLevel);
     }
 
-    @GetMapping("/all/performance-level/{id}")
+    @GetMapping("/all/performanceLevel/{id}")
     public Optional<PerformanceLevel> getOne(@PathVariable long id) {
         return performanceLevelService.getOne(id);
     }
 
-    @GetMapping("/all/performance-level")
+    @GetMapping("/all/performanceLevel")
     public List<PerformanceLevel> getAll() {
         return performanceLevelService.getAll();
     }
 
-    @PutMapping("/admin/performance-level/{id}")
+    @PutMapping("/admin/performanceLevel/{id}")
     public PerformanceLevel update(@Valid @RequestBody PerformanceLevel performanceLevel, @PathVariable long id) {
         return performanceLevelService.update(performanceLevel, id);
     }
 
-    @DeleteMapping("/admin/performance-level/{id}")
+    @DeleteMapping("/admin/performanceLevel/{id}")
     public String delete(@PathVariable long id) {
         performanceLevelService.delete(id);
         return "Successful deleted";
