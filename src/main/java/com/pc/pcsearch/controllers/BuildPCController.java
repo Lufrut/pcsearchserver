@@ -3,6 +3,7 @@ package com.pc.pcsearch.controllers;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
 import com.pc.pcsearch.services.BuildPCService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class BuildPCController {
     BuildPCService buildPCService;
 
     @PostMapping("/admin/buildPc")
-    public BuildPC create(@RequestBody BuildPC buildPC) {
+    public BuildPC create(@RequestBody @Valid BuildPC buildPC) {
         return buildPCService.create(buildPC);
     }
 
@@ -32,7 +33,7 @@ public class BuildPCController {
     }
 
     @PutMapping("/admin/buildPc/{id}")
-    public BuildPC update(@RequestBody BuildPC buildPC, @PathVariable long id) {
+    public BuildPC update(@RequestBody @Valid BuildPC buildPC, @PathVariable long id) {
         return buildPCService.update(buildPC, id);
     }
 
