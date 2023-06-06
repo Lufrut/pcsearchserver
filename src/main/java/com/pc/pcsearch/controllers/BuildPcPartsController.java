@@ -36,6 +36,7 @@ public class BuildPcPartsController {
         } else return false;
     }
 
+    @PostMapping("/buildPc")
     public BuildPC create(Authentication auth){
         User user = userRepository.findByUsername(auth.getName()).orElse(null);
         if(user != null) {
@@ -55,6 +56,7 @@ public class BuildPcPartsController {
             return buildPCRepository.save(buildPC);
         } else  return  null;
     }
+
     @GetMapping("/buildPc/{id}")
     public Optional<BuildPC> getOne(@PathVariable long id, Authentication auth){
         if(isUserOwnedRepo(auth, id)){
