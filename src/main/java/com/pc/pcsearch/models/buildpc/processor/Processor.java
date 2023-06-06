@@ -57,6 +57,10 @@ public class Processor {
     private CPUPcieVersion pcieVersion;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "processor_cpu_tech",
+            joinColumns = @JoinColumn(name = "processor_id"),
+            inverseJoinColumns = @JoinColumn(name = "cpu_tech_id"))
     private List<CPUTech> cpuTech;
 
     private String description;
