@@ -20,14 +20,14 @@ public class Processor {
     private String name;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="producer_id")
+    @JoinColumn(name="id")
     private Producers producer;
 
     private int yearOfRelease;
 
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="socket_id")
+    @JoinColumn(name="id")
     private MotherboardSocket socket;
 
     private int countOfCores;
@@ -41,7 +41,7 @@ public class Processor {
     private int l3Cache;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="cpu_generation_id")
+    @JoinColumn(name="id")
     private CPUGeneration cpuGeneration;
 
     private int technicalProcess;
@@ -53,7 +53,7 @@ public class Processor {
     private Boolean embeddedGraphic;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="pcie_version_id")
+    @JoinColumn(name="id")
     private CPUPcieVersion pcieVersion;
 
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
@@ -64,6 +64,6 @@ public class Processor {
     private int recommendedPrice;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="performance_level_id")
+    @JoinColumn(name="id")
     private PerformanceLevel performanceLevel;
 }
