@@ -56,7 +56,7 @@ public class Processor {
     @JoinColumn(name="pcie_version_id")
     private CPUPcieVersion pcieVersion;
 
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<CPUTech> cpuTech;
 
     private String description;
