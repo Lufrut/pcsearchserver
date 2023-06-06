@@ -6,7 +6,7 @@ import lombok.*;
 @Data
 
 @Entity
-@Table(name = "perfomance_level")
+@Table(name = "performance_level")
 public class PerformanceLevel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
