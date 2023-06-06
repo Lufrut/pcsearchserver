@@ -58,6 +58,6 @@ public class Processor {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private PerformanceLevel performanceLevel;
 }
