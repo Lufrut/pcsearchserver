@@ -68,7 +68,7 @@ public class BuildPcPartsController {
     public Optional<BuildPC> getOne(@PathVariable long id, Authentication auth){
         if(isUserOwnedRepo(auth, id)){
             return service.getOne(id);
-        } else return null;
+        } else return Optional.empty();
     }
 
     @GetMapping("/buildPc")

@@ -5,6 +5,8 @@ import com.pc.pcsearch.models.buildpc.motherboard.MotherboardSocket;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Data
 
@@ -49,8 +51,8 @@ public class Processor {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CPUPcieVersion pcieVersion;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private CPUTech cpuTech;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private List<CPUTech> cpuTech;
 
     private String description;
 
