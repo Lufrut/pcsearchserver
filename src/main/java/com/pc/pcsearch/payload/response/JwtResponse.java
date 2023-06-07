@@ -69,7 +69,7 @@ public class JwtResponse {
         this.username = username;
     }
 
-    public ERole getRoles() {
+    public ERole getRole() {
         return role;
     }
 }

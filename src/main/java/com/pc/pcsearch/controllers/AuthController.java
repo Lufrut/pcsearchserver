@@ -56,15 +56,15 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream()
+        List<String> role = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).toList();
-        ERole role = ERole.valueOf(roles.get(0)) ; // very genius idea to avoid list of enums on front side
+        ERole role1 = ERole.valueOf(role.get(0)) ; // very genius idea to avoid list of enums on front side
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 userDetails.getName(),
-                role));
+                role1));
     }
 
     @PostMapping("/signup")
