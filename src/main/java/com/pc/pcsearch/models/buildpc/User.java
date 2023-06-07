@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -45,4 +46,7 @@ public class User {
     @NotBlank
     @Email
     private String email;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE, mappedBy = "build_pc")
+    private List<BuildPC> buildPc;
 }
