@@ -38,7 +38,6 @@ public class User {
     @NotBlank
     private String username;
 
-    @NotBlank
     private String password;
 
     private ERole role;
