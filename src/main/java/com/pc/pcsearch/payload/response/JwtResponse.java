@@ -14,14 +14,14 @@ public class JwtResponse {
 
     private String name;
 
-    private ERole roles;
+    private ERole role;
 
     public JwtResponse(String accessToken, Long id, String username, String email, String name, ERole role) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
         this.email = email;
-        this.roles = role;
+        this.role = role;
         this.name = name;
     }
 
@@ -70,6 +70,6 @@ public class JwtResponse {
     }
 
     public ERole getRoles() {
-        return roles;
+        return role;
     }
 }
