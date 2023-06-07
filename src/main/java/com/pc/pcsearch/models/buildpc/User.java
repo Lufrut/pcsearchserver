@@ -1,4 +1,5 @@
 package com.pc.pcsearch.models.buildpc;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -47,6 +48,7 @@ public class User {
     @Email
     private String email;
 
+    @JsonIgnore
     @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE, mappedBy = "user")
     private List<BuildPC> buildPc;
 }
