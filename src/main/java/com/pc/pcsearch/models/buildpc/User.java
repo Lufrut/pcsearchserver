@@ -47,6 +47,6 @@ public class User {
     @Email
     private String email;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE, mappedBy = "build_pc")
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE, mappedBy = "user")
     private List<BuildPC> buildPc;
 }
