@@ -40,6 +40,8 @@ public class User {
     @NotBlank
     private String username;
 
+    @NotBlank
+    @JsonIgnore
     private String password;
 
     private ERole role;
