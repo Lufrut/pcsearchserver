@@ -27,7 +27,7 @@ public class BuildPC {
 
     private String nameOfBuild;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToOne
     private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
