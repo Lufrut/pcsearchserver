@@ -24,6 +24,7 @@ import com.pc.pcsearch.postgresql.repository.storage.SsdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,6 +117,24 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
 
     @Override
     public List<Motherboard> getMotherboards(long id) {
+        BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
+        if(buildPC != null){
+            if(buildPC.getProcessor() != null) {
+                List<Motherboard> motherboards = motherboardRepository.findAll();
+                List<Motherboard> sorted = new ArrayList<>();
+                for (Motherboard item :
+                        motherboards) {
+                    if (
+                            item.getSocket().getId() == buildPC.getProcessor().getSocket().getId()
+                            && item.getMaxTdpOfProcessors() >= buildPC.getProcessor().getTdp()
+                    ){
+                        sorted.add(item);
+                    }
+                }
+                return sorted;
+            }
+
+        }
         return motherboardRepository.findAll();
     }
 
