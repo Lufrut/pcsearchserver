@@ -1,6 +1,7 @@
 package com.pc.pcsearch.models.buildpc.cooler;
 import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import com.pc.pcsearch.models.buildpc.Producers;
+import com.pc.pcsearch.models.buildpc.motherboard.MotherboardSocket;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +22,7 @@ public class Cooler {
     private Producers producer;
 
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private List<CoolerSocket> socket;
+    private List<MotherboardSocket> socket;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private CoolerMaterial material;

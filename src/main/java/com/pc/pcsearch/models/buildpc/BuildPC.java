@@ -30,36 +30,36 @@ public class BuildPC {
     @ManyToOne
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Motherboard motherboard;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Processor processor;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private GraphicCard graphicCard;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Ram> ram;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private PowerSupply powerSupply;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Hdd> hdd;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Ssd> ssd;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Case pcCase;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Cooler cooler;
 
     private int countOfLikes;
 
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Rating ratingId;
 
     private int totalPrice;

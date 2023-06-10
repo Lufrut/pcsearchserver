@@ -5,6 +5,7 @@ import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import com.pc.pcsearch.models.buildpc.Producers;
 import com.pc.pcsearch.models.buildpc.processor.CPUGeneration;
 import com.pc.pcsearch.models.buildpc.processor.CPUPcieVersion;
+import com.pc.pcsearch.models.buildpc.ram.RamMemoryType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -43,6 +44,9 @@ public class Motherboard {
     private int supportedMemoryFrequency;
 
     private int maxAmountOfRam;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private RamMemoryType ramMemoryType;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private MotherboardNetwork network;

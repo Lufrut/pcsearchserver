@@ -5,7 +5,7 @@ import com.pc.pcsearch.models.buildpc.Producers;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Data
 
@@ -25,7 +25,7 @@ public class Case {
     private CaseSize size;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<FormFactor> formFactor;
+    private List<FormFactor> formFactor;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private  CasePowerSupplyLocation powerSupplyLocation;
@@ -39,7 +39,7 @@ public class Case {
     private int usb_2_0;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private ArrayList<CaseDesignFeatures> designFeatures;
+    private List<CaseDesignFeatures> designFeatures;
 
     private int maxLengthOfGraphicCard;
 
