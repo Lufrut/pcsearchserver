@@ -16,7 +16,7 @@ public class CoolerSocketController {
     @Autowired
     CoolerSocketService coolerSocketService;
 
-    @PutMapping("/admin/coolerSocket")
+    @PostMapping("/admin/coolerSocket")
     public CoolerSocket create(@Valid @RequestBody CoolerSocket socket){
         return  coolerSocketService.create(socket);
     }
