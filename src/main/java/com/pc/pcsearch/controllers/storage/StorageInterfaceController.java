@@ -17,7 +17,7 @@ public class StorageInterfaceController {
     StorageInterfaceService storageInterfaceService;
 
     @PostMapping("/admin/storageInterface")
-    public StorageInterface create(StorageInterface storageInterface){
+    public StorageInterface create(@RequestBody @Valid StorageInterface storageInterface){
         return storageInterfaceService.create(storageInterface);
     }
 

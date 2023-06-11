@@ -15,7 +15,7 @@ public class MotherboardChipsetController {
     @Autowired
     MotherboardChipsetService chipsetService;
 
-    @PostMapping("/admin/motherboardСhipset")
+    @PostMapping("/admin/motherboardChipset")
     public MotherboardChipset create(@Valid  @RequestBody MotherboardChipset chipset) {
         return chipsetService.create(chipset);
     }
@@ -30,12 +30,12 @@ public class MotherboardChipsetController {
         return chipsetService.getAll();
     }
 
-    @PutMapping("/admin/motherboardСhipset/{id}")
+    @PutMapping("/admin/motherboardChipset/{id}")
     public MotherboardChipset update(@Valid @RequestBody MotherboardChipset chipset, @PathVariable long id) {
         return chipsetService.update(chipset, id);
     }
 
-    @DeleteMapping("/admin/motherboardСhipset/{id}")
+    @DeleteMapping("/admin/motherboardChipset/{id}")
     public String delete(@PathVariable long id) {
         chipsetService.delete(id);
         return "Successful deleted";
