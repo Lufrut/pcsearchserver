@@ -21,7 +21,11 @@ public class Cooler {
     @ManyToOne
     private Producers producer;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "cooler_motherboard_socket",
+            joinColumns = @JoinColumn(name = "Cooler_id"),
+            inverseJoinColumns = @JoinColumn(name = "motherboard_socket_id"))
     private List<MotherboardSocket> socket;
 
     @ManyToOne
