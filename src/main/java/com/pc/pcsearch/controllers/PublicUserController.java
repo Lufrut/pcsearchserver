@@ -6,6 +6,8 @@ import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.PublicUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ public class PublicUserController {
 
     @Autowired
     PasswordEncoder encoder;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Autowired
     PublicUserService publicUserService;
@@ -37,7 +42,9 @@ public class PublicUserController {
     public String changePassword(@RequestBody ChangePasswordRequest request, Authentication auth){
         User temp = getUser(auth);
         if (temp != null ){
-            if(temp.getPassword().equals(encoder.encode(request.getOldPassword()))){
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(auth.getName(), request.getOldPassword()));
+            if(authentication.getName().equals(auth.getName())){
                 temp.setPassword(encoder.encode(request.getNewPassword()));
                 userRepository.save(temp);
                 return "Password successfully changed";
