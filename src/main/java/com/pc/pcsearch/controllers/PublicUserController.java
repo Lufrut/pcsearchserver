@@ -1,6 +1,7 @@
 package com.pc.pcsearch.controllers;
 
 import com.pc.pcsearch.models.buildpc.User;
+import com.pc.pcsearch.payload.request.ChangePasswordRequest;
 import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.PublicUserService;
 import jakarta.validation.Valid;
@@ -33,11 +34,11 @@ public class PublicUserController {
         return null;
     }
     @PostMapping("/pass")
-    public String changePassword(@RequestBody String oldPass, @RequestBody String newPass, Authentication auth){
+    public String changePassword(@RequestBody ChangePasswordRequest request, Authentication auth){
         User temp = getUser(auth);
         if (temp != null ){
-            if(temp.getPassword().equals(encoder.encode(oldPass))){
-                temp.setPassword(encoder.encode(newPass));
+            if(temp.getPassword().equals(encoder.encode(request.getOldPassword()))){
+                temp.setPassword(encoder.encode(request.getNewPassword()));
                 userRepository.save(temp);
                 return "Password successfully changed";
             } else return  "Password not match";

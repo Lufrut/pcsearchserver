@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PutMapping("/admin/user/{id}")
-    public User update(@Valid @RequestBody User user, @PathVariable long id){
+    public User update(@RequestBody User user, @PathVariable long id){
         return userService.update(user, id);
     }
 
