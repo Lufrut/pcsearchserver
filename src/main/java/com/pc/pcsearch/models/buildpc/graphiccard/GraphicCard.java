@@ -15,12 +15,12 @@ public class GraphicCard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
     private  String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers vendor;
 
     private int year;
@@ -31,7 +31,7 @@ public class GraphicCard {
 
     private int memoryAmount;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private GPUMemoryType memoryType;
 
     private int memoryFrequency;
@@ -40,20 +40,20 @@ public class GraphicCard {
 
     private int tdp;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany
     private List<GPUConnector> connector;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private GPUInterfaceType interfaceType;
 
     private int length;
 
     private String description;
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private GPUTechnologies gpuTechnologies;
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

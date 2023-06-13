@@ -22,19 +22,19 @@ public class Motherboard {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private MotherboardSocket socket;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany
     private List<CPUGeneration> cpuGenerations;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private MotherboardChipset chipset;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private FormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers motherboardProducer;
 
     private int maxTdpOfProcessors;
@@ -45,17 +45,17 @@ public class Motherboard {
 
     private int maxAmountOfRam;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private RamMemoryType ramMemoryType;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private MotherboardNetwork network;
 
     private boolean bluetooth;
 
     private boolean wifi;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private CPUPcieVersion pcieVersion;
 
     private int pci_express_x16;
@@ -88,6 +88,6 @@ public class Motherboard {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

@@ -18,10 +18,10 @@ public class Case {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private CaseSize size;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

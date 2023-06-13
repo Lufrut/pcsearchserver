@@ -15,27 +15,27 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     UserService userService;
-    @PostMapping("/user/user")
+    @PostMapping("/admin/user")
     public User createAdmin(@Valid @RequestBody User user){
         return userService.create(user);
     }
 
-    @PutMapping("/user/user/{id}")
+    @PutMapping("/admin/user/{id}")
     public User update(@Valid @RequestBody User user, @PathVariable long id){
         return userService.update(user, id);
     }
 
-    @GetMapping("/user/user")
+    @GetMapping("/all/user")
     public List<User> getAll(){
         return userService.getAll();
     }
 
-    @GetMapping("/user/user/{id}")
+    @GetMapping("/all/user/{id}")
     public Optional<User> getOne(@PathVariable long id){
         return userService.findById(id);
     }
 
-    @DeleteMapping("/user/user/{id}")
+    @DeleteMapping("/admin/user/{id}")
     public String delete(@PathVariable long id){
         userService.delete(id);
         return "Successful deleted";
