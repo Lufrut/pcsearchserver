@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 
 @Entity
-@Table(name = "motheboard")
+@Table(name = "motherboard")
 public class Motherboard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +26,10 @@ public class Motherboard {
     private MotherboardSocket socket;
 
     @ManyToMany
+    @JoinTable(
+            name = "motherboard_generation",
+            joinColumns = @JoinColumn(name = "motherboard_id"),
+            inverseJoinColumns = @JoinColumn(name = "cpu_generation_id"))
     private List<CPUGeneration> cpuGenerations;
 
     @ManyToOne
