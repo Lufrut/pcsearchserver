@@ -51,7 +51,7 @@ public class PublicUserController {
     }
 
     @PutMapping("")
-    public User update(Authentication auth, @RequestBody @Valid User user){
+    public User update(Authentication auth, @RequestBody User user){
         User temp = getUser(auth);
             if(temp != null){
                 return publicUserService.update(user, temp.getId());
