@@ -6,6 +6,7 @@ import com.pc.pcsearch.services.PublicUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -14,6 +15,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/user/user")
 public class PublicUserController {
+
+    @Autowired
+    PasswordEncoder encoder;
+
     @Autowired
     PublicUserService publicUserService;
 
@@ -26,6 +31,17 @@ public class PublicUserController {
 
         }
         return null;
+    }
+    @PostMapping("/pass")
+    public String changePassword(@RequestBody String oldPass, @RequestBody String newPass, Authentication auth){
+        User temp = getUser(auth);
+        if (temp != null ){
+            if(temp.getPassword().equals(encoder.encode(oldPass))){
+                temp.setPassword(encoder.encode(newPass));
+                userRepository.save(temp);
+                return "Password successfully changed";
+            } else return  "Password not match";
+        } else  return "User not exist";
     }
     @GetMapping("")
     public Optional<User> getOne(Authentication auth){
