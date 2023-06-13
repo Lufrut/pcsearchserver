@@ -17,7 +17,7 @@ public class CoolerController {
     CoolerService coolerService;
 
     @PostMapping("/admin/cooler")
-    public Cooler create(Cooler cooler){
+    public Cooler create(@RequestBody @Valid Cooler cooler){
         return coolerService.create(cooler);
     }
 
