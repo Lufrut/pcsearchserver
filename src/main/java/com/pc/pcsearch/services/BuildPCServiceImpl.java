@@ -55,7 +55,9 @@ public class BuildPCServiceImpl implements BuildPCService {
     public BuildPC update(BuildPC buildPC, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if (temp != null) {
-            return buildPCRepository.save(buildPC);
+            buildPC.setRatingId(temp.getRatingId());
+            temp = buildPC;
+            return buildPCRepository.save(temp);
         } else {
             return null;
         }
