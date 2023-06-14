@@ -2,6 +2,7 @@ package com.pc.pcsearch.services;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
 import com.pc.pcsearch.models.buildpc.Rating;
+import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 import com.pc.pcsearch.postgresql.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class BuildPCServiceImpl implements BuildPCService {
     public BuildPC create(BuildPC req) {
         BuildPC buildPC = new BuildPC();
         buildPC.setTotalPrice(0);
+        buildPC.setUser(req.getUser());
         buildPC.setPcCase(req.getPcCase());
         buildPC.setSsd(req.getSsd());
         buildPC.setHdd(req.getHdd());
@@ -33,7 +35,6 @@ public class BuildPCServiceImpl implements BuildPCService {
         buildPC.setGraphicCard(req.getGraphicCard());
         buildPC.setMotherboard(req.getMotherboard());
         buildPC.setCountOfLikes(0);
-        buildPC.setTotalPrice(0);
         Rating rating = new Rating();
         rating.setBuildPc(buildPC);
         buildPC.setRatingId(ratingRepository.save(rating));
