@@ -21,6 +21,6 @@ public class Rating {
             inverseJoinColumns = @JoinColumn(name = "likes_id"))
     private List<Like> like;
 
-    @OneToOne(mappedBy = "build_pc")
+    @OneToOne(mappedBy = "ratingId")
     private BuildPC buildPc;
 }
