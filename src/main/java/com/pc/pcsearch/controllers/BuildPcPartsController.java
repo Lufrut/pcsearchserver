@@ -48,7 +48,7 @@ public class BuildPcPartsController {
         } else return false;
     }
 
-    @GetMapping("/buidPc/rating")
+    @GetMapping("/buildPc/rating")
     public List<BuildPC> getRating(){
        return service.getAllByRating();
     }
