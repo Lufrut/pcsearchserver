@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "pc_case")
-public class Case {
+public class PCCase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

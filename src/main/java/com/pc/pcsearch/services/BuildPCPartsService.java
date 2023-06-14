@@ -5,13 +5,12 @@ import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
 import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.models.buildpc.processor.Processor;
 import com.pc.pcsearch.models.buildpc.ram.Ram;
 import com.pc.pcsearch.models.buildpc.storage.Hdd;
 import com.pc.pcsearch.models.buildpc.storage.Ssd;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -81,9 +80,9 @@ public interface BuildPCPartsService {
 
     void deletePowerSupply(long id);
 
-    List<Case> getCases(long id);
+    List<PCCase> getCases(long id);
 
-    Case updateCase(Case item, long id);
+    PCCase updateCase(PCCase item, long id);
 
     void deleteCase(long id);
 }

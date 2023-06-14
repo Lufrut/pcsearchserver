@@ -1,18 +1,18 @@
 package com.pc.pcsearch.services.pccase;
 
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CaseService {
-    Case create(Case item);
+    PCCase create(PCCase item);
 
-    Optional<Case> getOne(long id);
+    Optional<PCCase> getOne(long id);
 
-    List<Case> getAll();
+    List<PCCase> getAll();
 
-    Case update(Case item, long id);
+    PCCase update(PCCase item, long id);
 
     void delete(long id);
 }

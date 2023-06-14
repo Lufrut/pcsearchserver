@@ -6,7 +6,7 @@ import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
 import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.models.buildpc.processor.Processor;
 import com.pc.pcsearch.models.buildpc.ram.Ram;
@@ -354,7 +354,7 @@ public class BuildPcPartsController {
     }
 
     @GetMapping("/buildPc/case/{id}")
-    public List<Case> getCases(@PathVariable long id, Authentication auth) {
+    public List<PCCase> getCases(@PathVariable long id, Authentication auth) {
         if (isUserOwnedRepo(auth, id)) {
             return service.getCases(id);
         } else {
@@ -363,8 +363,8 @@ public class BuildPcPartsController {
     }
 
     @PutMapping("/buildPc/case/{id}")
-    public Case updateCase(
-            @RequestBody @Valid Case pcCase,
+    public PCCase updateCase(
+            @RequestBody @Valid PCCase pcCase,
             @PathVariable long id,
             Authentication auth
     ) {

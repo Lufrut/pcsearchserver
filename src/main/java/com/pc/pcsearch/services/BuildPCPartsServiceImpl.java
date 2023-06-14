@@ -1,14 +1,13 @@
 package com.pc.pcsearch.services;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
-import com.pc.pcsearch.models.buildpc.PerformanceLevel;
 import com.pc.pcsearch.models.buildpc.FormFactor;
 import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
 import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
 import com.pc.pcsearch.models.buildpc.motherboard.MotherboardSocket;
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.models.buildpc.processor.Processor;
 import com.pc.pcsearch.models.buildpc.ram.Ram;
@@ -530,7 +529,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     }
 
     @Override
-    public List<Case> getCases(long id) {
+    public List<PCCase> getCases(long id) {
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
         if(
                 buildPC != null
@@ -550,12 +549,12 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         return caseRepository.findAll();
     }
 
-    private List<Case> filterCaseByFormFactor(BuildPC buildPC){
-        List<Case> cases = caseRepository.findAll();
-        List<Case> sorted = new ArrayList<>();
+    private List<PCCase> filterCaseByFormFactor(BuildPC buildPC){
+        List<PCCase> PCCases = caseRepository.findAll();
+        List<PCCase> sorted = new ArrayList<>();
         long formFactorId = buildPC.getMotherboard().getFormFactor().getId();
-        for (Case item:
-             cases) {
+        for (PCCase item:
+                PCCases) {
             for (FormFactor item2:
                     item.getFormFactor()) {
                 if(item2.getId() == formFactorId) sorted.add(item);
@@ -564,33 +563,33 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         return sorted;
     }
 
-    private List<Case> filterCaseByGraphicCardLength(List<Case> cases, BuildPC buildPC){
-        List<Case> sorted = new ArrayList<>();
-        for (Case item:
-             cases) {
+    private List<PCCase> filterCaseByGraphicCardLength(List<PCCase> PCCases, BuildPC buildPC){
+        List<PCCase> sorted = new ArrayList<>();
+        for (PCCase item:
+                PCCases) {
             if(item.getMaxLengthOfGraphicCard() <= buildPC.getGraphicCard().getLength()) sorted.add(item);
         }
         return sorted;
     }
 
-    private List<Case> filterCaseByPerformanceLevel(List<Case> cases, BuildPC buildPC){
-        List<Case> sorted = new ArrayList<>();
+    private List<PCCase> filterCaseByPerformanceLevel(List<PCCase> PCCases, BuildPC buildPC){
+        List<PCCase> sorted = new ArrayList<>();
         long performanceLevelId =  buildPC.getProcessor().getPerformanceLevel().getId();
-        for (Case item:
-                cases) {
+        for (PCCase item:
+                PCCases) {
             if(
                     item.getPerformanceLevel().getId() == performanceLevelId
             ) {
-                cases.remove(item);
+                PCCases.remove(item);
                 sorted.add(item);
             }
         }
-        sorted.addAll(cases);
+        sorted.addAll(PCCases);
         return sorted;
     }
 
     @Override
-    public Case updateCase(Case item, long id) {
+    public PCCase updateCase(PCCase item, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setPcCase(item);

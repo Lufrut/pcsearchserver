@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
 import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 import com.pc.pcsearch.models.buildpc.powersupply.PowerSupply;
 import com.pc.pcsearch.models.buildpc.processor.Processor;
 import com.pc.pcsearch.models.buildpc.ram.Ram;
@@ -65,7 +65,7 @@ public class BuildPC {
     private List<Ssd> ssd;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Case pcCase;
+    private PCCase pcCase;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Cooler cooler;

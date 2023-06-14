@@ -1,6 +1,6 @@
 package com.pc.pcsearch.services.pccase;
 
-import com.pc.pcsearch.models.buildpc.pccase.Case;
+import com.pc.pcsearch.models.buildpc.pccase.PCCase;
 import com.pc.pcsearch.postgresql.repository.pccase.CaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,23 +14,23 @@ public class CaseServiceImpl  implements CaseService{
     CaseRepository repository;
 
     @Override
-    public Case create(Case item) {
+    public PCCase create(PCCase item) {
         return repository.save(item);
     }
 
     @Override
-    public Optional<Case> getOne(long id) {
+    public Optional<PCCase> getOne(long id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<Case> getAll() {
+    public List<PCCase> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Case update(Case item, long id) {
-        Case temp = repository.findById(id).orElse(null);
+    public PCCase update(PCCase item, long id) {
+        PCCase temp = repository.findById(id).orElse(null);
         if(temp != null && item.getId() == id){
             return repository.save(item);
         } else return null;
