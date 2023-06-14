@@ -62,7 +62,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
 
     @Override
     public BuildPC create(BuildPC buildPC) {
-        return buildPCRepository.save(buildPC);
+        return buildPCRepository.saveAndFlush(buildPC);
     }
 
     @Override
