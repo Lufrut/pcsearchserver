@@ -1,7 +1,9 @@
 package com.pc.pcsearch.services;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
+import com.pc.pcsearch.models.buildpc.Rating;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
+import com.pc.pcsearch.postgresql.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,14 @@ public class BuildPCServiceImpl implements BuildPCService {
     @Autowired
     BuildPCRepository buildPCRepository;
 
+    @Autowired
+    RatingRepository ratingRepository;
+
     @Override
     public BuildPC create(BuildPC buildPC) {
+        Rating rating = new Rating();
+        rating.setBuildPc(buildPC);
+        buildPC.setRatingId(ratingRepository.save(rating));
         return buildPCRepository.save(buildPC);
     }
 
