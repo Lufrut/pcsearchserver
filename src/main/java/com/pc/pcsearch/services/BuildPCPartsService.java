@@ -17,6 +17,8 @@ import java.util.Optional;
 
 public interface BuildPCPartsService {
 
+    List<BuildPC> getAllByRating();
+
     BuildPC create(BuildPC buildPC);
 
     Optional<BuildPC> getOne(long id);

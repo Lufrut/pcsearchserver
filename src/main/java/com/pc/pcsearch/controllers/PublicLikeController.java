@@ -6,7 +6,6 @@ import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.PublicLikeService;
-import com.pc.pcsearch.services.PublicUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/user/like")
-public class PublicClassController {
+public class PublicLikeController {
     @Autowired
     UserRepository userRepository;
 

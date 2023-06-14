@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface BuildPCRepository extends JpaRepository<BuildPC, Long> {
     List<BuildPC> findByUser(User user);
+
+    List<BuildPC> findAllByOrderByCountOfLikesDesc();
 }

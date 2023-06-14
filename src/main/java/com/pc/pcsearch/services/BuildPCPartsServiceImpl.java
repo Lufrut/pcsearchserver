@@ -61,6 +61,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     BuildPCRepository buildPCRepository;
 
     @Override
+    public List<BuildPC> getAllByRating(){
+        return buildPCRepository.findAllByOrderByCountOfLikesDesc();
+    }
+    @Override
     public BuildPC create(BuildPC buildPC) {
         return buildPCRepository.saveAndFlush(buildPC);
     }
@@ -299,7 +303,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     @Override
     public Ram updateRam(Ram ram, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
-        if(temp!= null){
+        if(temp!= null && temp.getMotherboard() != null){
             int memorySize = 0;
             int usedMemorySlots = 0;
             List<Ram> rams = temp.getRam();
