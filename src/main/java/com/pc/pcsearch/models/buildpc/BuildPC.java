@@ -71,7 +71,7 @@ public class BuildPC {
 
     private int countOfLikes;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Rating ratingId;
 
     private int totalPrice;

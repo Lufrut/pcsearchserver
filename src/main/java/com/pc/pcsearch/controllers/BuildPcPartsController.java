@@ -65,7 +65,9 @@ public class BuildPcPartsController {
             buildPC.setNameOfBuild(null);
             buildPC.setGraphicCard(null);
             buildPC.setMotherboard(null);
-            buildPC.setRatingId(ratingRepository.save(new Rating()));
+            Rating rating = new Rating();
+            rating.setBuildPc(buildPC);
+            buildPC.setRatingId(ratingRepository.save(rating));
             return buildPCRepository.save(buildPC);
         } else  return  null;
     }

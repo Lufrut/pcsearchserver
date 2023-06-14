@@ -12,7 +12,7 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private BuildPC buildPc;
 
     @ManyToOne
