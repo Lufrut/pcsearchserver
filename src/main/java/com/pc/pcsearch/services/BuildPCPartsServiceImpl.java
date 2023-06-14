@@ -79,7 +79,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     public BuildPC update(BuildPC buildPC, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if (temp != null) {
-            return buildPCRepository.save(buildPC);
+            return buildPCRepository.saveAndFlush(buildPC);
         } else {
             return null;
         }
@@ -101,7 +101,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setProcessor(processor);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return processor;
         } else return null;
     }
@@ -144,7 +144,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setMotherboard(motherboard);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return motherboard;
         } else return null;
     }
@@ -201,7 +201,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setCooler(cooler);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return cooler;
         } else return null;
     }
@@ -245,7 +245,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setGraphicCard(graphicCard);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return graphicCard;
         } else return null;
     }
@@ -318,7 +318,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
 
             rams.add(ram);
             temp.setRam(rams);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return ram;
         } else return null;
     }
@@ -378,7 +378,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             List<Hdd>  hdds = temp.getHdd();
             hdds.add(hdd);
             temp.setHdd(hdds);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return hdd;
         } else return null;
     }
@@ -438,7 +438,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             List<Ssd>  ssds = temp.getSsd();
             ssds.add(ssd);
             temp.setSsd(ssds);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return ssd;
         } else return null;
     }
@@ -514,7 +514,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setPowerSupply(powerSupply);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return powerSupply;
         } else return null;
     }
@@ -593,7 +593,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp!= null){
             temp.setPcCase(item);
-            buildPCRepository.save(temp);
+            buildPCRepository.saveAndFlush(temp);
             return item;
         } else return null;
     }
