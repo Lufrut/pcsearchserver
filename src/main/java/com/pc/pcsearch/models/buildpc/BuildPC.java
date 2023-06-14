@@ -31,13 +31,13 @@ public class BuildPC {
     @ManyToOne
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Motherboard motherboard;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Processor processor;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private GraphicCard graphicCard;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -47,7 +47,7 @@ public class BuildPC {
             inverseJoinColumns = @JoinColumn(name = "ram_id"))
     private List<Ram> ram;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private PowerSupply powerSupply;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -64,10 +64,10 @@ public class BuildPC {
             inverseJoinColumns = @JoinColumn(name = "ssd_id"))
     private List<Ssd> ssd;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private PCCase pcCase;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Cooler cooler;
 
     private int countOfLikes;
