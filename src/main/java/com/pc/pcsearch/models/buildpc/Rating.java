@@ -21,6 +21,6 @@ public class Rating {
             inverseJoinColumns = @JoinColumn(name = "likes_id"))
     private List<Like> like;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BuildPC buildPc;
 }
