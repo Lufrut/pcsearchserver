@@ -18,7 +18,7 @@ public class BuildPCController {
     BuildPCService buildPCService;
 
     @PostMapping("/admin/buildPc")
-    public BuildPC create(@RequestBody @Valid BuildPC buildPC) {
+    public BuildPC create(@RequestBody  BuildPC buildPC) {
         return buildPCService.create(buildPC);
     }
 
