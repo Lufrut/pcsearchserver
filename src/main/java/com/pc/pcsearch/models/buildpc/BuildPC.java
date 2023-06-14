@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 
 @Entity
-@Table(name = "Build_pc")
+@Table(name = "build_pc")
 public class BuildPC {
 
     @Id
@@ -74,6 +74,7 @@ public class BuildPC {
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating ratingId;
 
     private int totalPrice;
