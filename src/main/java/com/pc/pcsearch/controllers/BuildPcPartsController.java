@@ -1,6 +1,7 @@
 package com.pc.pcsearch.controllers;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
+import com.pc.pcsearch.models.buildpc.Rating;
 import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
@@ -12,6 +13,7 @@ import com.pc.pcsearch.models.buildpc.ram.Ram;
 import com.pc.pcsearch.models.buildpc.storage.Hdd;
 import com.pc.pcsearch.models.buildpc.storage.Ssd;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
+import com.pc.pcsearch.postgresql.repository.RatingRepository;
 import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.BuildPCPartsService;
 import jakarta.validation.Valid;
@@ -34,6 +36,9 @@ public class BuildPcPartsController {
 
     @Autowired
     BuildPCRepository buildPCRepository;
+
+    @Autowired
+    RatingRepository ratingRepository;
 
     public boolean isUserOwnedRepo(Authentication authentication, long id){
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -60,6 +65,7 @@ public class BuildPcPartsController {
             buildPC.setNameOfBuild(null);
             buildPC.setGraphicCard(null);
             buildPC.setMotherboard(null);
+            buildPC.setRatingId(ratingRepository.save(new Rating()));
             return buildPCRepository.save(buildPC);
         } else  return  null;
     }

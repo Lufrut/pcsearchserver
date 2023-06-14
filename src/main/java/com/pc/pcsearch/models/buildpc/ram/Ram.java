@@ -15,17 +15,17 @@ public class Ram {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private RamMemoryType memoryType;
 
     private int memoryCapacity;
 
     private int frequency;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private RamTimings timings;
 
     private float powerSupplyVoltage;
@@ -34,6 +34,6 @@ public class Ram {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

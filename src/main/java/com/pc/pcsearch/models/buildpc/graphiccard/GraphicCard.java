@@ -41,6 +41,10 @@ public class GraphicCard {
     private int tdp;
 
     @ManyToMany
+    @JoinTable(
+            name = "graphic_card_gpu_connector",
+            joinColumns = @JoinColumn(name = "graphic_card_id"),
+            inverseJoinColumns = @JoinColumn(name = "gpu_connector_id"))
     private List<GPUConnector> connector;
 
     @ManyToOne

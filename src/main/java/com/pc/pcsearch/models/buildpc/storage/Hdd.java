@@ -14,7 +14,7 @@ public class Hdd {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
     private String name;
@@ -23,11 +23,11 @@ public class Hdd {
 
     private int speed;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private StorageFormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(referencedColumnName = "id", nullable = false)
     private StorageInterface storageInterface;
 
@@ -41,6 +41,6 @@ public class Hdd {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

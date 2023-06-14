@@ -13,17 +13,17 @@ public class Ssd {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
     private String name;
 
     private int storageSize;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private StorageFormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private StorageInterface storageInterface;
 
     private int bufferSize;
@@ -32,13 +32,13 @@ public class Ssd {
 
     private int writingSpeed;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private SsdCellsType cellsType;
 
     private String description;
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

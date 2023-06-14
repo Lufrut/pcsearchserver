@@ -24,10 +24,14 @@ public class Case {
     @ManyToOne
     private CaseSize size;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "pc_case_form_factor",
+            joinColumns = @JoinColumn(name = "pc_case_id"),
+            inverseJoinColumns = @JoinColumn(name = "form_factor_id"))
     private List<FormFactor> formFactor;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     private  CasePowerSupplyLocation powerSupplyLocation;
 
     private Boolean fansIncluded;
@@ -38,7 +42,11 @@ public class Case {
 
     private int usb_2_0;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "pc_case_Case_design_features",
+            joinColumns = @JoinColumn(name = "pc_case_id"),
+            inverseJoinColumns = @JoinColumn(name = "Case_design_features_id"))
     private List<CaseDesignFeatures> designFeatures;
 
     private int maxLengthOfGraphicCard;
@@ -47,6 +55,6 @@ public class Case {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 }

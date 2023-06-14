@@ -16,24 +16,28 @@ public class PowerSupply {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private Producers producer;
 
     private String name;
 
     private int power;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private FormFactor formFactor;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     private PerformanceLevel performanceLevel;
 
     private boolean pfcModule;
 
     private boolean modularConnection;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "power_supply_power_supply_protection_functions",
+            joinColumns = @JoinColumn(name = "power_supply_id"),
+            inverseJoinColumns = @JoinColumn(name = "power_supply_protection_functions_id"))
     private List<PowerSupplyProtectionFunctions> protection;
 
     private int cpu_4pin;

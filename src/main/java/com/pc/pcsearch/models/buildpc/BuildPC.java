@@ -40,15 +40,27 @@ public class BuildPC {
     private GraphicCard graphicCard;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "Build_pc_ram",
+            joinColumns = @JoinColumn(name = "Build_pc_id"),
+            inverseJoinColumns = @JoinColumn(name = "ram_id"))
     private List<Ram> ram;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private PowerSupply powerSupply;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "Build_pc_hdd",
+            joinColumns = @JoinColumn(name = "Build_pc_id"),
+            inverseJoinColumns = @JoinColumn(name = "hdd_id"))
     private List<Hdd> hdd;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "Build_pc_ssd",
+            joinColumns = @JoinColumn(name = "Build_pc_id"),
+            inverseJoinColumns = @JoinColumn(name = "ssd_id"))
     private List<Ssd> ssd;
 
     @ManyToOne(fetch = FetchType.EAGER)

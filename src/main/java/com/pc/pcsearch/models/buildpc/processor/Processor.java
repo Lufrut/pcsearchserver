@@ -52,11 +52,11 @@ public class Processor {
 
     private Boolean embeddedGraphic;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="pcie_version_id")
     private CPUPcieVersion pcieVersion;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "processor_cpu_tech",
             joinColumns = @JoinColumn(name = "processor_id"),
@@ -67,7 +67,7 @@ public class Processor {
 
     private int recommendedPrice;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="performance_level_id")
     private PerformanceLevel performanceLevel;
 }
