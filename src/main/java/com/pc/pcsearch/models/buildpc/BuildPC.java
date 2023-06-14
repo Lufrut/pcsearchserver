@@ -1,5 +1,6 @@
 package com.pc.pcsearch.models.buildpc;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
 import com.pc.pcsearch.models.buildpc.motherboard.Motherboard;
@@ -71,6 +72,7 @@ public class BuildPC {
 
     private int countOfLikes;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Rating ratingId;
 
