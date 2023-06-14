@@ -48,6 +48,11 @@ public class BuildPcPartsController {
         } else return false;
     }
 
+    @GetMapping("/buidPc/rating")
+    public List<BuildPC> getRating(){
+       return service.getAllByRating();
+    }
+
     @PostMapping("/buildPc")
     public BuildPC create(Authentication auth){
         User user = userRepository.findByUsername(auth.getName()).orElse(null);
