@@ -19,7 +19,21 @@ public class BuildPCServiceImpl implements BuildPCService {
     RatingRepository ratingRepository;
 
     @Override
-    public BuildPC create(BuildPC buildPC) {
+    public BuildPC create(BuildPC req) {
+        BuildPC buildPC = new BuildPC();
+        buildPC.setTotalPrice(0);
+        buildPC.setPcCase(req.getPcCase());
+        buildPC.setSsd(req.getSsd());
+        buildPC.setHdd(req.getHdd());
+        buildPC.setPowerSupply(req.getPowerSupply());
+        buildPC.setRam(req.getRam());
+        buildPC.setProcessor(req.getProcessor());
+        buildPC.setCooler(req.getCooler());
+        buildPC.setNameOfBuild(req.getNameOfBuild());
+        buildPC.setGraphicCard(req.getGraphicCard());
+        buildPC.setMotherboard(req.getMotherboard());
+        buildPC.setCountOfLikes(0);
+        buildPC.setTotalPrice(0);
         Rating rating = new Rating();
         rating.setBuildPc(buildPC);
         buildPC.setRatingId(ratingRepository.save(rating));
