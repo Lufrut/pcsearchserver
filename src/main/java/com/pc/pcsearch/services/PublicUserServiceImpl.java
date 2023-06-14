@@ -24,8 +24,7 @@ public class PublicUserServiceImpl implements PublicUserService{
             temp.setEmail(user.getEmail());
             temp.setUsername(user.getUsername()); // possible bug with jwt tokens but should works
             return userRepository.save(temp);
-        }
-        return null;
+        } else return null;
     }
 
     @Override
