@@ -136,7 +136,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 return sorted;
 
         }
-        return motherboardRepository.findAll();
+        else return motherboardRepository.findAll();
     }
 
     @Override
