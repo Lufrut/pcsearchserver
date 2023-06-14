@@ -7,6 +7,7 @@ import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.PublicLikeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,5 +50,12 @@ public class PublicLikeController {
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
         if(user != null && buildPC != null) return publicLikeService.isLiked(buildPC, user);
         else return false;
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id, Authentication auth){
+        User user = isUserOwnedBuild(auth, id);
+        BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
+        if(user != null && buildPC != null) publicLikeService.removeLike(buildPC, user);
     }
 }
