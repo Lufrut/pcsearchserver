@@ -36,9 +36,10 @@ public class BuildPCServiceImpl implements BuildPCService {
         buildPC.setMotherboard(req.getMotherboard());
         buildPC.setCountOfLikes(0);
         Rating rating = new Rating();
+        buildPCRepository.saveAndFlush(buildPC);
         rating.setBuildPc(buildPC);
         buildPC.setRatingId(ratingRepository.save(rating));
-        return buildPCRepository.save(buildPC);
+        return buildPCRepository.saveAndFlush(buildPC);
     }
 
     @Override
