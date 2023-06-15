@@ -615,7 +615,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         List<PCCase> sorted = new ArrayList<>();
         for (PCCase item:
                 PCCases) {
-            if(item.getMaxLengthOfGraphicCard() <= buildPC.getGraphicCard().getLength()) sorted.add(item);
+            if(item.getMaxLengthOfGraphicCard() >=  buildPC.getGraphicCard().getLength()) sorted.add(item);
         }
         logger.error("it here dude", sorted);
         return sorted;
