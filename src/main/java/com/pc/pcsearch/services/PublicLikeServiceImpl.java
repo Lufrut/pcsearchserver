@@ -7,6 +7,8 @@ import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 import com.pc.pcsearch.postgresql.repository.LikeRepository;
 import com.pc.pcsearch.postgresql.repository.RatingRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,7 @@ public class PublicLikeServiceImpl implements PublicLikeService{
     @Autowired
     BuildPCRepository buildPCRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(PublicLikeServiceImpl.class);
     @Override
     public boolean isLiked(BuildPC buildPC, User user) {
         return !likeRepository.findLikeByBuildPcAndUser(buildPC, user).isEmpty();
@@ -33,15 +36,17 @@ public class PublicLikeServiceImpl implements PublicLikeService{
     public Like putLike(BuildPC buildPC, User user) {
         Rating rating = ratingRepository.findById(buildPC.getRatingId().getId()).orElse(null);
 
+        logger.error("it's here dude");
+        logger.error(String.valueOf(rating));
        if(!isLiked(buildPC, user) && rating != null) {
             Like like = new Like();
             like.setUser(user);
             like.setBuildPc(buildPC);
-           System.out.println("it's here dude");
-            System.out.println(like);
+           logger.error("it's here dude");
+           logger.error(String.valueOf(like));
             likeRepository.saveAndFlush(like);
-           System.out.println("it's here dude");
-           System.out.println(like);
+           logger.error("it's here dude");
+           logger.error(String.valueOf(like));
             List<Like> likes = rating.getLike();
             likes.add(like);
             rating.setLike(likes);
