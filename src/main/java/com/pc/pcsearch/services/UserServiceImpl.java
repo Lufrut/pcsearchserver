@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService{
         ){
             temp.setUsername(user.getUsername());
         }
+        if(Objects.nonNull(user.getRole())
+                && !"".equalsIgnoreCase(user.getRole().name())
+        ){
+            temp.setRole(user.getRole());
+        }
 
         return userRepository.save(temp);
     }
