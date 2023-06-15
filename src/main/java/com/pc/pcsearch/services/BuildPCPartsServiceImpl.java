@@ -148,6 +148,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setProcessor(processor);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return processor;
         } else return null;
     }
@@ -191,6 +192,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setMotherboard(motherboard);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return motherboard;
         } else return null;
     }
@@ -248,6 +250,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setCooler(cooler);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return cooler;
         } else return null;
     }
@@ -292,6 +295,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setGraphicCard(graphicCard);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return graphicCard;
         } else return null;
     }
@@ -366,6 +370,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             rams.add(ram);
             temp.setRam(rams);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return ram;
         } else return null;
     }
@@ -426,6 +431,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             hdds.add(hdd);
             temp.setHdd(hdds);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return hdd;
         } else return null;
     }
@@ -486,6 +492,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             ssds.add(ssd);
             temp.setSsd(ssds);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return ssd;
         } else return null;
     }
@@ -562,6 +569,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setPowerSupply(powerSupply);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return powerSupply;
         } else return null;
     }
@@ -607,7 +615,6 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 if(item2.getId() == formFactorId) sorted.add(item);
             }
         }
-        logger.error("it here dude", sorted);
         return sorted;
     }
 
@@ -617,7 +624,6 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 PCCases) {
             if(item.getMaxLengthOfGraphicCard() >=  buildPC.getGraphicCard().getLength()) sorted.add(item);
         }
-        logger.error("it here dude", sorted);
         return sorted;
     }
 
@@ -634,7 +640,6 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         }
         PCCases.removeAll(sorted);
         sorted.addAll(PCCases);
-        logger.error("it here dude", sorted);
         return sorted;
     }
 
@@ -644,6 +649,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setPcCase(item);
             buildPCRepository.save(temp);
+            totalPrice(id);
             return item;
         } else return null;
     }
