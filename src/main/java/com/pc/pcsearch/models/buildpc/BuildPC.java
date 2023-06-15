@@ -73,7 +73,7 @@ public class BuildPC {
     private int countOfLikes;
 
     @JsonIgnore
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating ratingId;
 
