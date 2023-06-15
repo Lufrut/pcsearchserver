@@ -84,6 +84,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         return buildPCRepository.findByUser(user);
     }
 
+    public void totalPrice(){
+
+    }
+
     @Override
     public BuildPC update(BuildPC buildPC, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
@@ -148,7 +152,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 return sorted;
 
         }
-        else return motherboardRepository.findAll();
+        else return new ArrayList<>();
     }
 
     @Override
@@ -205,7 +209,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             sorted2.addAll(sorted);
             return sorted2;
         }
-        return coolerRepository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
@@ -249,7 +253,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         sorted2.addAll(sorted);
         return sorted2;
     }
-        return graphicCardRepository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
@@ -306,7 +310,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             }
 
 
-        return ramRepository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
@@ -381,7 +385,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             sorted2.addAll(sorted);
             return sorted2;
         }
-        return hddRepository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
@@ -441,7 +445,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             sorted2.addAll(sorted);
             return sorted2;
         }
-        return ssdRepository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
@@ -492,7 +496,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                   buildPC
           );
         }
-        return powerSupplyRepository.findAll();
+        return new ArrayList<>();
     }
     private List<PowerSupply> filterPowerSupplyByTdp(BuildPC buildPC){
         int tdp = (int) ((buildPC.getProcessor().getTdp()+ buildPC.getGraphicCard().getTdp())*1.3);
@@ -559,7 +563,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             );
 
         }
-        return caseRepository.findAll();
+        return new ArrayList<>();
     }
 
     private List<PCCase> filterCaseByFormFactor(BuildPC buildPC){
