@@ -29,9 +29,7 @@ public class PublicLikeController {
 
     private static final Logger logger = LoggerFactory.getLogger(PublicLikeController.class);
     public User isUserExist(Authentication authentication){
-        User user = userRepository.findByUsername(authentication.getName()).orElse(null);
-        if(user != null) return user;
-        return null;
+        return userRepository.findByUsername(authentication.getName()).orElse(null);
     }
 
     @PostMapping("/{id}")
@@ -54,6 +52,8 @@ public class PublicLikeController {
     public void delete(@PathVariable long id, Authentication auth){
         User user = isUserExist(auth);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
+        logger.error("it here dude", buildPC);
+        logger.error("it here dude", user);
         if(user != null && buildPC != null) publicLikeService.removeLike(buildPC, user);
     }
 }
