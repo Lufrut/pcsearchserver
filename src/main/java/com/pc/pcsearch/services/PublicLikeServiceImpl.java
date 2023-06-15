@@ -36,13 +36,13 @@ public class PublicLikeServiceImpl implements PublicLikeService{
             Like like = new Like();
             like.setUser(user);
             like.setBuildPc(buildPC);
-            likeRepository.save(like);
+            likeRepository.saveAndFlush(like);
             List<Like> likes = rating.getLike();
             likes.add(like);
             rating.setLike(likes);
-            ratingRepository.save(rating);
+            ratingRepository.saveAndFlush(rating);
             buildPC.setCountOfLikes(buildPC.getCountOfLikes() + 1);
-            buildPCRepository.save(buildPC);
+            buildPCRepository.saveAndFlush(buildPC);
             return like;
         } else return null;
     }
