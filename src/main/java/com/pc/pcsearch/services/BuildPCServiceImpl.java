@@ -38,8 +38,10 @@ public class BuildPCServiceImpl implements BuildPCService {
         Rating rating = new Rating();
         buildPCRepository.saveAndFlush(buildPC);
         rating.setBuildPc(buildPC);
-        buildPC.setRatingId(ratingRepository.saveAndFlush(rating));
-        return buildPCRepository.saveAndFlush(buildPC);
+        BuildPC temp = buildPCRepository.findById(buildPC.getId()).orElse(null);
+        assert temp != null;
+        temp.setRatingId(ratingRepository.save(rating));
+        return buildPCRepository.save(temp);
     }
 
     @Override
