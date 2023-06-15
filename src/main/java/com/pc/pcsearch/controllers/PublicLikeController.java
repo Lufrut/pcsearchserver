@@ -38,8 +38,6 @@ public class PublicLikeController {
     public Like putLike(@PathVariable long id, Authentication auth){
         User user = isUserExist(auth);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
-        logger.error("it here dude", buildPC);
-        logger.error("it here dude", user);
         if(user != null && buildPC != null) return publicLikeService.putLike(buildPC, user);
         return null;
     }
