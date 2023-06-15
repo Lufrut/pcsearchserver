@@ -159,6 +159,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setProcessor(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -203,6 +204,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setMotherboard(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -261,6 +263,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setCooler(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -306,6 +309,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setGraphicCard(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -386,6 +390,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             }
             temp.setRam(rams);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -395,6 +400,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setRam(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -447,6 +453,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             }
             temp.setHdd(hdds);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -456,6 +463,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setHdd(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -508,6 +516,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             }
             temp.setSsd(ssds);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -517,6 +526,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setSsd(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -580,6 +590,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setPowerSupply(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 
@@ -660,6 +671,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         if(temp!= null){
             temp.setPcCase(null);
             buildPCRepository.save(temp);
+            totalPrice(id);
         }
     }
 }
