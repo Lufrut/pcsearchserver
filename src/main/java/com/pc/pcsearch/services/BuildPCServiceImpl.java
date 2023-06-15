@@ -38,7 +38,7 @@ public class BuildPCServiceImpl implements BuildPCService {
         Rating rating = new Rating();
         buildPCRepository.saveAndFlush(buildPC);
         rating.setBuildPc(buildPC);
-        buildPC.setRatingId(ratingRepository.save(rating));
+        buildPC.setRatingId(ratingRepository.saveAndFlush(rating));
         return buildPCRepository.saveAndFlush(buildPC);
     }
 

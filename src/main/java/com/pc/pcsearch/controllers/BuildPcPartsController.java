@@ -73,7 +73,7 @@ public class BuildPcPartsController {
             Rating rating = new Rating();
             buildPCRepository.save(buildPC);
             rating.setBuildPc(buildPC);
-            buildPC.setRatingId(ratingRepository.save(rating));
+            buildPC.setRatingId(ratingRepository.saveAndFlush(rating));
             return buildPCRepository.saveAndFlush(buildPC);
         } else  return  null;
     }
