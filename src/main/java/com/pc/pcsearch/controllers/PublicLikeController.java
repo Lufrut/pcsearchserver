@@ -28,32 +28,25 @@ public class PublicLikeController {
     PublicLikeService publicLikeService;
 
     private static final Logger logger = LoggerFactory.getLogger(PublicLikeController.class);
-    public User isUserOwnedBuild(Authentication authentication, long id){
+    public User isUserExist(Authentication authentication){
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
-        BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
-        if(
-                user != null
-                        && buildPC != null
-                        && user.getId() == buildPC.getUser().getId()
-
-        ) return user;
-
+        if(user != null) return user;
         return null;
     }
 
     @PostMapping("/{id}")
     public Like putLike(@PathVariable long id, Authentication auth){
-        User user = isUserOwnedBuild(auth, id);
+        User user = isUserExist(auth);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
         logger.error("it here dude", buildPC);
         logger.error("it here dude", user);
         if(user != null && buildPC != null) return publicLikeService.putLike(buildPC, user);
-        else return null;
+        return null;
     }
 
     @GetMapping("/{id}")
     public Boolean isLiked(@PathVariable long id, Authentication auth){
-        User user = isUserOwnedBuild(auth, id);
+        User user = isUserExist(auth);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
         if(user != null && buildPC != null) return publicLikeService.isLiked(buildPC, user);
         else return false;
@@ -61,7 +54,7 @@ public class PublicLikeController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id, Authentication auth){
-        User user = isUserOwnedBuild(auth, id);
+        User user = isUserExist(auth);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
         if(user != null && buildPC != null) publicLikeService.removeLike(buildPC, user);
     }
