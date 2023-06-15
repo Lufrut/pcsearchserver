@@ -1,6 +1,9 @@
 package com.pc.pcsearch.models.buildpc;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Data
@@ -17,5 +20,9 @@ public class Like {
 
     @ManyToOne
     private User user;
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "like")
+    List<Rating> ratings;
 
 }
