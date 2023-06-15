@@ -278,6 +278,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 buildPC != null
                         && buildPC.getMotherboard() != null
                         && buildPC.getProcessor() != null
+                        && buildPC.getMotherboard().getRamMemoryType() != null
         ){
             long memoryTypeId = buildPC.getMotherboard().getRamMemoryType().getId();
             List<Ram> rams = ramRepository.findAll();
