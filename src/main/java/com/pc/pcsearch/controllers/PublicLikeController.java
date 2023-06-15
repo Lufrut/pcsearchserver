@@ -6,6 +6,9 @@ import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
 import com.pc.pcsearch.postgresql.repository.UserRepository;
 import com.pc.pcsearch.services.PublicLikeService;
+import com.pc.pcsearch.services.PublicLikeServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,6 +26,8 @@ public class PublicLikeController {
 
     @Autowired
     PublicLikeService publicLikeService;
+
+    private static final Logger logger = LoggerFactory.getLogger(PublicLikeController.class);
     public User isUserOwnedBuild(Authentication authentication, long id){
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
@@ -40,6 +45,8 @@ public class PublicLikeController {
     public Like putLike(@PathVariable long id, Authentication auth){
         User user = isUserOwnedBuild(auth, id);
         BuildPC buildPC = buildPCRepository.findById(id).orElse(null);
+        logger.error("it here dude", buildPC);
+        logger.error("it here dude", user);
         if(user != null && buildPC != null) return publicLikeService.putLike(buildPC, user);
         else return null;
     }

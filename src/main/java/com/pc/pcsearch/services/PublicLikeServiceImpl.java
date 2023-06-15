@@ -36,17 +36,14 @@ public class PublicLikeServiceImpl implements PublicLikeService{
     public Like putLike(BuildPC buildPC, User user) {
         Rating rating = ratingRepository.findById(buildPC.getRatingId().getId()).orElse(null);
 
-        logger.error("it's here dude");
-        logger.error(String.valueOf(rating));
+        logger.error("it's here dude", rating);
        if(!isLiked(buildPC, user) && rating != null) {
             Like like = new Like();
             like.setUser(user);
             like.setBuildPc(buildPC);
-           logger.error("it's here dude");
-           logger.error(String.valueOf(like));
+           logger.error("it's here dude", like);
             likeRepository.saveAndFlush(like);
-           logger.error("it's here dude");
-           logger.error(String.valueOf(like));
+           logger.error("it's here dude", like);
             List<Like> likes = rating.getLike();
             likes.add(like);
             rating.setLike(likes);
