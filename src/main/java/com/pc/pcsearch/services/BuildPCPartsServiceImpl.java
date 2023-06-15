@@ -2,6 +2,7 @@ package com.pc.pcsearch.services;
 
 import com.pc.pcsearch.models.buildpc.BuildPC;
 import com.pc.pcsearch.models.buildpc.FormFactor;
+import com.pc.pcsearch.models.buildpc.Rating;
 import com.pc.pcsearch.models.buildpc.User;
 import com.pc.pcsearch.models.buildpc.cooler.Cooler;
 import com.pc.pcsearch.models.buildpc.graphiccard.GraphicCard;
@@ -14,6 +15,7 @@ import com.pc.pcsearch.models.buildpc.ram.Ram;
 import com.pc.pcsearch.models.buildpc.storage.Hdd;
 import com.pc.pcsearch.models.buildpc.storage.Ssd;
 import com.pc.pcsearch.postgresql.repository.BuildPCRepository;
+import com.pc.pcsearch.postgresql.repository.RatingRepository;
 import com.pc.pcsearch.postgresql.repository.cooler.CoolerRepository;
 import com.pc.pcsearch.postgresql.repository.graphiccard.GraphicCardRepository;
 import com.pc.pcsearch.postgresql.repository.motherboard.MotherboardRepository;
@@ -32,6 +34,9 @@ import java.util.*;
 public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     @Autowired
     ProcessorRepository processorRepository;
+
+    @Autowired
+    RatingRepository ratingRepository;
 
     @Autowired
     MotherboardRepository motherboardRepository;
@@ -82,11 +87,14 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     @Override
     public BuildPC update(BuildPC buildPC, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
-        if (temp != null) {
-            return buildPCRepository.save(buildPC);
-        } else {
-            return null;
+        if(temp != null) {
+            Rating rating = ratingRepository.findById(temp.getRatingId().getId()).orElse(null);
+            if (rating != null) {
+                buildPC.setRatingId(rating);
+                return buildPCRepository.save(buildPC);
+            }
         }
+        return null;
     }
 
     @Override
