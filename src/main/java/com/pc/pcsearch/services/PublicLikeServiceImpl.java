@@ -10,6 +10,7 @@ import com.pc.pcsearch.postgresql.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Console;
 import java.util.List;
 
 @Service
@@ -36,7 +37,11 @@ public class PublicLikeServiceImpl implements PublicLikeService{
             Like like = new Like();
             like.setUser(user);
             like.setBuildPc(buildPC);
+           System.out.println("it's here dude");
+            System.out.println(like);
             likeRepository.saveAndFlush(like);
+           System.out.println("it's here dude");
+           System.out.println(like);
             List<Like> likes = rating.getLike();
             likes.add(like);
             rating.setLike(likes);
