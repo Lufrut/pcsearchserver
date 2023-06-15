@@ -21,6 +21,6 @@ public class Rating {
             inverseJoinColumns = @JoinColumn(name = "likes_id"))
     private List<Like> like;
 
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE, mappedBy = "ratingId")
+    @OneToOne(mappedBy = "ratingId")
     private BuildPC buildPc;
 }
