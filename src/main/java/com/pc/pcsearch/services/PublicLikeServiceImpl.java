@@ -53,7 +53,7 @@ public class PublicLikeServiceImpl implements PublicLikeService{
     @Override
     public void removeLike(BuildPC buildPC, User user) {
         if(isLiked(buildPC, user)) {
-            likeRepository.deleteAllByBuildPcAndUser(buildPC, user);
+            likeRepository.deleteByBuildPcAndUser(buildPC, user);
             buildPC.setCountOfLikes(buildPC.getCountOfLikes() - 1);
             buildPCRepository.save(buildPC);
         }

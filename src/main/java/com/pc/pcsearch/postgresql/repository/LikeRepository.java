@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface LikeRepository extends JpaRepository<Like, Long> {
     List<Like> findLikeByBuildPcAndUser(BuildPC buildPC, User user);
-    void deleteAllByBuildPcAndUser(BuildPC buildPC, User user);
+    void deleteByBuildPcAndUser(BuildPC buildPC, User user);
 }
