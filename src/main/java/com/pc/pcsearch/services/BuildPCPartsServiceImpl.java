@@ -84,8 +84,11 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         return buildPCRepository.findByUser(user);
     }
 
-    public void totalPrice(){
+    public void totalPrice(long id){
+        BuildPC temp = buildPCRepository.findById(id).orElse(null);
+        if(temp != null){
 
+        }
     }
 
     @Override
@@ -202,10 +205,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 if(
                         item.getPerformanceLevel().getId() == performanceLevelId
                 ) {
-                    sorted.remove(item);
                     sorted2.add(item);
                 }
             }
+            sorted.removeAll(sorted2);
             sorted2.addAll(sorted);
             return sorted2;
         }
@@ -246,11 +249,11 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             if(
                     item.getPerformanceLevel().getId() == performanceLevelId
             ) {
-                sorted.remove(item);
                 sorted2.add(item);
             }
         }
-        sorted2.addAll(sorted);
+            sorted.removeAll(sorted2);
+            sorted2.addAll(sorted);
         return sorted2;
     }
         return new ArrayList<>();
@@ -301,11 +304,11 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                     if(
                             item.getPerformanceLevel().getId() == performanceLevelId
                     ) {
-                        sorted.remove(item);
                         sorted2.add(item);
                     }
                 }
-                sorted2.addAll(sorted);
+            sorted.removeAll(sorted2);
+            sorted2.addAll(sorted);
                 return sorted2;
             }
 
@@ -378,10 +381,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 if(
                         item.getPerformanceLevel().getId() == performanceLevelId
                 ) {
-                    sorted.remove(item);
                     sorted2.add(item);
                 }
             }
+            sorted.removeAll(sorted2);
             sorted2.addAll(sorted);
             return sorted2;
         }
@@ -438,10 +441,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 if(
                         item.getPerformanceLevel().getId() == performanceLevelId
                 ) {
-                    sorted.remove(item);
                     sorted2.add(item);
                 }
             }
+            sorted.removeAll(sorted2);
             sorted2.addAll(sorted);
             return sorted2;
         }
@@ -519,10 +522,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             if(
                     item.getPerformanceLevel().getId() == performanceLevelId
             ) {
-                powerSupplies.remove(item);
                 sorted.add(item);
             }
         }
+        powerSupplies.removeAll(sorted);
         sorted.addAll(powerSupplies);
         return sorted;
     }
@@ -597,10 +600,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             if(
                     item.getPerformanceLevel().getId() == performanceLevelId
             ) {
-                PCCases.remove(item);
                 sorted.add(item);
             }
         }
+        PCCases.removeAll(sorted);
         sorted.addAll(PCCases);
         return sorted;
     }
