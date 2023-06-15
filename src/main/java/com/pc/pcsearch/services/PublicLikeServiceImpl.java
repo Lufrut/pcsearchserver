@@ -56,6 +56,15 @@ public class PublicLikeServiceImpl implements PublicLikeService{
         if(isLiked(buildPC, user)) {
             List<Like> likes = likeRepository.findLikeByBuildPcAndUser(buildPC,user);
             logger.error("it here dude", likes);
+            Rating temp =  ratingRepository.findById(buildPC.getRatingId().getId()).orElse(null);
+            List<Like> ratingLikes =  temp.getLike();
+            for (Like item:
+                 ratingLikes) {
+                if(likes.get(0).getId() == item.getId()) ratingLikes.remove(item);
+            }
+            temp.setLike(ratingLikes);
+
+            ratingRepository.saveAndFlush(temp);
             likeRepository.deleteById(likes.get(0).getId());
             buildPC.setCountOfLikes(buildPC.getCountOfLikes() - 1);
             buildPCRepository.save(buildPC);
