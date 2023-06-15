@@ -25,6 +25,8 @@ import com.pc.pcsearch.postgresql.repository.processor.ProcessorRepository;
 import com.pc.pcsearch.postgresql.repository.ram.RamRepository;
 import com.pc.pcsearch.postgresql.repository.storage.HddRepository;
 import com.pc.pcsearch.postgresql.repository.storage.SsdRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +67,8 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     @Autowired
     BuildPCRepository buildPCRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(BuildPCPartsServiceImpl.class);
+
     @Override
     public List<BuildPC> getAllByRating(){
         return buildPCRepository.findAllByOrderByCountOfLikesDesc();
@@ -87,7 +91,30 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     public void totalPrice(long id){
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
         if(temp != null){
+            int price = 0;
 
+            if (temp.getProcessor() != null) price += temp.getProcessor().getRecommendedPrice();
+            if (temp.getMotherboard() != null) price += temp.getMotherboard().getRecommendedPrice();
+            if (temp.getCooler() != null) price += temp.getCooler().getRecommendedPrice();
+            if (temp.getRam() != null && !temp.getRam().isEmpty())
+                for (Ram item:
+                        temp.getRam()) {
+                    price += item.getRecommendedPrice();
+                }
+            if (temp.getHdd() != null && !temp.getHdd().isEmpty())
+                for (Hdd item:
+                        temp.getHdd()) {
+                    price += item.getRecommendedPrice();
+                }
+            if (temp.getSsd() != null && !temp.getSsd().isEmpty())
+                for (Ssd item:
+                        temp.getSsd()) {
+                    price += item.getRecommendedPrice();
+                }
+            if (temp.getPowerSupply() != null) price += temp.getPowerSupply().getRecommendedPrice();
+            if (temp.getPcCase() != null) price += temp.getPcCase().getRecommendedPrice();
+            temp.setTotalPrice(price);
+            buildPCRepository.saveAndFlush(temp);
         }
     }
 
@@ -580,6 +607,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 if(item2.getId() == formFactorId) sorted.add(item);
             }
         }
+        logger.error("it here dude", sorted);
         return sorted;
     }
 
@@ -589,6 +617,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
                 PCCases) {
             if(item.getMaxLengthOfGraphicCard() <= buildPC.getGraphicCard().getLength()) sorted.add(item);
         }
+        logger.error("it here dude", sorted);
         return sorted;
     }
 
@@ -605,6 +634,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
         }
         PCCases.removeAll(sorted);
         sorted.addAll(PCCases);
+        logger.error("it here dude", sorted);
         return sorted;
     }
 
