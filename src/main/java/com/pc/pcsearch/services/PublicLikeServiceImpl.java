@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -58,10 +59,12 @@ public class PublicLikeServiceImpl implements PublicLikeService{
             logger.error("it here dude", likes);
             Rating temp =  ratingRepository.findById(buildPC.getRatingId().getId()).orElse(null);
             List<Like> ratingLikes =  temp.getLike();
+            List<Like> toRemove = new ArrayList<>();
             for (Like item:
                  ratingLikes) {
-                if(likes.get(0).getId() == item.getId()) ratingLikes.remove(item);
+                if(likes.get(0).getId() == item.getId()) toRemove.add(item);
             }
+            ratingLikes.removeAll(toRemove);
             temp.setLike(ratingLikes);
 
             ratingRepository.saveAndFlush(temp);
