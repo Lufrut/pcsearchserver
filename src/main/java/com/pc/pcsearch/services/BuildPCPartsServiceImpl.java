@@ -96,6 +96,7 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
             if (temp.getProcessor() != null) price += temp.getProcessor().getRecommendedPrice();
             if (temp.getMotherboard() != null) price += temp.getMotherboard().getRecommendedPrice();
             if (temp.getCooler() != null) price += temp.getCooler().getRecommendedPrice();
+            if (temp.getGraphicCard() != null) price += temp.getGraphicCard().getRecommendedPrice();
             if (temp.getRam() != null && !temp.getRam().isEmpty())
                 for (Ram item:
                         temp.getRam()) {
