@@ -355,7 +355,10 @@ public class BuildPCPartsServiceImpl implements BuildPCPartsService{
     @Override
     public Ram updateRam(Ram ram, long id) {
         BuildPC temp = buildPCRepository.findById(id).orElse(null);
-        if(temp!= null && temp.getMotherboard() != null){
+        if(
+                temp!= null
+                        && temp.getMotherboard() != null
+        ){
             int memorySize = 0;
             int usedMemorySlots = 0;
             List<Ram> rams = temp.getRam();
